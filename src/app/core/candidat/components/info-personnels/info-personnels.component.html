@@ -1,0 +1,346 @@
+<div *ngIf="isFetchingInfo">
+  <h4>
+    <img src="/assets/images/connexion/loading.webp" width="300" height="100" />
+  </h4>
+</div>
+<div *ngIf="!isFetchingInfo" class="row">
+  <h5
+    *ngIf="errorText"
+    class="col-sm-12 col-lg-5 text-light text-center bg-danger m-auto p-3">
+    {{ errorText }}
+  </h5>
+  <form [formGroup]="candidatInfoForm" (ngSubmit)="updateCandidatInfo()">
+    <div class="row mb-3">
+      <div class="col-lg-10">
+        <div class="mb-3">
+          <label for="formFile" class="form-label"
+            >{{'candidat.info_perso.importer_photo_profil' | translate }}</label>
+            <span class="text-danger fw-bold">(Taille <= 1mb)</span
+            >
+          <p class="text-primary " *ngIf="photoLink"><i class="bi bi-image"></i> <span class="fw-bold text-decoration-underline m-1">{{'candidat.info_perso.photo_courant' | translate }}</span>  {{photoLink}}</p>
+          <input
+            (change)="onFileSelected($event)"
+            class="form-control"
+            type="file"
+            accept="image/png, image/jpeg, image/bmp"
+            formControlName="pathPhoto"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-lg-3">
+        <div class="form-group required">
+          <label class="col-form-label-sm h6 control-label" for="id_nom"
+            >{{'candidat.info_perso.Nom' | translate }}</label
+          >
+          <input
+            type="text"
+            name="nom"
+            class="form-control form-control-sm"
+            maxlength="50"
+            required=""
+            formControlName="nom"
+            id="id_nom"
+          />
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="form-group required">
+          <label class="col-form-label-sm h6 control-label" for="id_prenom"
+            >{{'candidat.info_perso.Prenom' | translate }}</label
+          >
+          <input
+            type="text"
+            name="prenom"
+            value=""
+            class="form-control form-control-sm"
+            maxlength="50"
+            required=""
+            id="id_prenom"
+            formControlName="prenom"
+          />
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="form-group required">
+          <label class="col-form-label-sm h6 control-label" for="id_cin"
+            >{{'candidat.info_perso.CIN' | translate }}</label
+          >
+          <input
+            type="text"
+            name="cin"
+            class="form-control form-control-sm"
+            maxlength="12"
+            min="2"
+            required=""
+            id="id_cin"
+            formControlName="cin"
+          />
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="form-group required">
+          <label class="col-form-label-sm h6 control-label" for="id_cne"
+            >{{'candidat.info_perso.CNE' | translate }}</label
+          >
+          <input
+            type="text"
+            name="cne"
+            value="${candidat.cne}"
+            class="form-control form-control-sm"
+            maxlength="12"
+            min="2"
+            required=""
+            formControlName="cne"
+            id="id_cne"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-lg-3">
+        <div class="form-group">
+          <label class="col-form-label-sm h6" for="id_nom_ar"
+            >{{'candidat.info_perso.Nom_ar' | translate }}</label
+          >
+          <input
+            type="text"
+            name="nom_ar"
+            class="form-control form-control-sm keyboardInput"
+            dir="rtl"
+            maxlength="50"
+            id="id_nom_ar"
+            formControlName="nomCandidatAr"
+          />
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="form-group">
+          <label class="col-form-label-sm h6" for="id_prenom_ar"
+            >{{'candidat.info_perso.Prenom_ar' | translate }}</label
+          >
+          <input
+            type="text"
+            name="prenom_ar"
+            value="${candidat.prenomCandidatAr}"
+            class="form-control form-control-sm keyboardInput"
+            dir="rtl"
+            maxlength="50"
+            id="id_prenom_ar"
+            formControlName="prenomCandidatAr"
+          />
+        </div>
+      </div>
+
+      <div class="col-lg-3">
+        <div class="form-group required">
+          <label
+            class="col-form-label-sm h6 control-label"
+            for="id_date_naissance"
+            >{{'candidat.info_perso.date_naissance' | translate }}</label
+          >
+
+          <input
+            type="date"
+            name="date_naissance"
+            value="${candidat.dateDeNaissance}"
+            class="form-control form-control-sm"
+            required=""
+            id="id_date_naissance"
+            formControlName="dateDeNaissance"
+          />
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="form-group required">
+          <label class="col-form-label-sm h6 control-label" for="id_sexe"
+            >{{'candidat.info_perso.sexe' | translate }}</label
+          >
+
+          <div class="form-group">
+            <select
+              formControlName="sexe"
+              class="form-select form-select-sm"
+              name="sexe"
+              required=""
+              id="id_sexe"
+            >
+              <option value="m" selected>{{'candidat.info_perso.masculine' | translate }}</option>
+              <option value="f">{{'candidat.info_perso.feminine' | translate }}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-lg-3">
+        <div class="form-group required">
+          <label
+            class="col-form-label-sm h6 control-label"
+            for="id_lieu_naissance"
+            >{{'candidat.info_perso.lieu_naissance' | translate }}</label
+          >
+          <input
+            type="text"
+            name="lieu_naissance"
+            formControlName="villeDeNaissance"
+            class="form-control form-control-sm"
+            maxlength="200"
+            required=""
+            id="id_lieu_naissance"
+          />
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="form-group">
+          <label class="col-form-label-sm h6" for="id_lieu_naissance_ar"
+            >{{'candidat.info_perso.lieu_naissance_ar' | translate }}</label
+          >
+          <input
+            type="text"
+            name="lieu_naissance_ar"
+            formControlName="villeDeNaissanceAr"
+            class="form-control form-control-sm keyboardInput"
+            dir="rtl"
+            maxlength="200"
+            id="id_lieu_naissance_ar"
+          />
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="form-group required">
+          <label
+            class="col-form-label-sm h6 control-label"
+            for="id_adresse_personnelle"
+            >{{'candidat.info_perso.adresse_residence' | translate }}</label
+          >
+          <input
+            type="text"
+            name=""
+            class="form-control form-control-sm"
+            maxlength="300"
+            required
+            id="id_adresse_personnelle"
+            formControlName="adresse"
+          />
+        </div>
+      </div>
+
+      <div class="col-lg-3">
+        <div class="form-group required">
+          <label class="col-form-label-sm h6 control-label" for="id_ville"
+            >{{'candidat.info_perso.ville_naissance' | translate }}</label
+          >
+          <input
+            type="text"
+            name="ville"
+            class="form-control form-control-sm"
+            maxlength="45"
+            required=""
+            id="id_ville"
+            formControlName="ville"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-lg-3">
+        <div class="form-group required">
+          <label
+            class="col-form-label-sm h6 control-label"
+            for="id_lieu_naissance"
+            >{{'candidat.info_perso.ville_naissance_ar' | translate }}</label
+          >
+          <input
+            type="text"
+            name="ville_naissance"
+            formControlName="villeDeNaissanceAr"
+            class="form-control form-control-sm keyboardInput"
+            maxlength="17"
+            dir="rtl"
+            id="id_lieu_naissance"
+          />
+        </div>
+      </div>
+
+      <div class="col-lg-3">
+        <div class="form-group required">
+          <label class="col-form-label-sm h6 control-label" for="id_telephone"
+            >{{'candidat.info_perso.telephone' | translate }}</label
+          >
+          <input
+            type="tel"
+            name="telephone"
+            formControlName="telCandidat"
+            class="form-control form-control-sm"
+            maxlength="20"
+            required=""
+            id="id_telephone"
+          />
+        </div>
+      </div>
+
+      <div class="col-lg-3">
+        <div class="form-group required">
+          <label
+            class="col-form-label-sm h6 control-label"
+            for="id_Province_bac"
+            >{{'candidat.info_perso.Pays' | translate }}</label
+          >
+          <select
+          id="select-state"
+            formControlName="pays"
+            class="form-control form-control-sm"
+            required=""
+            id="id_Province_bac"
+          >
+            <option
+              value="{{ country.country }}"
+              *ngFor="let country of _countries"
+            >
+              {{ country.country }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-lg-3">
+        <div class="form-group required">
+          <label class="col-form-label-sm h6 control-label"
+            >{{'candidat.info_perso.fonctionnaire' | translate }} </label
+          >
+          <select
+            formControlName="fonctionnaire"
+            name=""
+            class="form-select form-select-sm"
+          >
+            <option value="oui">oui</option>
+            <option value="non">non</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-3 my-3">
+      <button
+        *ngIf="!isUpdating"
+        class="btn btn-primary m-auto"
+        type="submit"
+        [disabled]="!permitUpdate"
+      >
+      {{'candidat.info_perso.confirmer' | translate }}  
+      </button>
+      <h4 *ngIf="isUpdating">
+        <img
+          src="/assets/images/connexion/loading.webp"
+          width="300"
+          height="100"
+        />
+      </h4>
+    </div>
+  </form>
+</div>

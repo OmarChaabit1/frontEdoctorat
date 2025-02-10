@@ -1,0 +1,32 @@
+
+<div id="carouselExampleCaptions" class="carousel slide m-3" data-bs-ride="carousel">
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon text-primary" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden text-primary">Next</span>
+  </button>
+    <h3 class="text-color bg-white mt-3 my-3 border-start border-primary border-3 mt-3 text-start p-3">Laboratoires de recherche a l'USMBA</h3>
+    
+    <div class="carousel-inner">
+      <div class="carousel-item"
+      [ngClass]="getSliderClass(first,last,isEven,isOdd)"
+     
+                                                *ngFor="let labo of laboratoires;
+                                                index as i;
+                                                first as first;
+                                                last as last;
+                                                even as isEven;
+                                                odd as isOdd">
+         
+        <img [src]="labo.pathImage" style="height:73vh;" class="d-block shadow w-100 img-thumbnail img-bordered" alt="/assets/images/labo/pic4.png">
+        <div class="carousel-caption d-none d-md-block">
+          
+          <p class="bg-white mt-3 my-3 border-start border-end border-primary border-3 text-start p-3 rounded text-color text-center fs-3"><span class="bg-color">{{labo.initialLabo}}</span>{{labo.nomLaboratoire}}</p>
+        </div>
+      </div>
+    </div>
+ 
+  </div>

@@ -1,0 +1,176 @@
+{
+    "home": {
+      "Pole_doctorat": "POLE OF DOCTORAL STUDIES",
+      "pole_doctrales": {
+        "description": "Description",
+        "ced": "Center for Doctoral Studies"
+      },
+      "laboratoire_recherche": "RESEARCH LABORATORY",
+      "formation_doctorale": "DOCTORAL TRAINING",
+      "Reglement_candidature": "RULES AND APPLICATION",
+      "reg_candidature": {
+        "Charte_de_doctorat": "Doctoral Charter",
+        "Comment candidater": "How to apply?",
+        "Candidater": "Apply",
+        "guide": "guide"
+      },
+      "connecter": "SIGN IN",
+      "footer": {
+        "email_footer": "By entering your email you will receive news",
+        "abonnement": "Follow",
+        "description": "Sidi Mohamed Ben Abdellah University of Fez aspires to be among the top three Moroccan multidisciplinary universities and one of the twenty largest universities in Africa, recognized for its commitment to excellence, through the quality of its student-centered training and world-class scientific and technological research.",
+        "doctorat": "Edoctorat",
+        "prof": "Teachers",
+        "plus": "Plus",
+        "a_propos": "A Propos",
+        "faq": "FAQ",
+        "contact": "Contact",
+        "formation": "Formations",
+        "mobilite": "Mobilite",
+        "Pole_recherche": "Pole de recherches",
+        "proc": "Formulaire et procedures",
+        "Appel": "Appel d'offres",
+        "cite": "La cite l'innovation de fès",
+        "president": "Services Presidences",
+        "cooperation": "Coopération internationale"
+      },
+      "welcome": {
+        "doctorat": "E-doctorat - USMBA",
+        "candidater": "Apply",
+        "connecter": "Se Connecter",
+        "cycle": "Cycle Doctorale - USMBA",
+        "candidat": "Candidat",
+        "projet": "Projets réalisés",
+        "formation": "Formations doctorales"
+      },
+      "conseils": {
+        "conseils": "Conseils",
+        "titre1": "Aie confiance",
+        "text1": "  Des milliers de personnes avant toi ont fait leurs études doctorales Bien que cela soit quelque peu intimidant, aie confiance en tes  capacités à compléter ta thèse",
+        "titre2": "Évite les sujets trop actuels",
+        "text2": "Comme une thèse prend plusieurs années, choisis un sujet qui sera  toujours intéressant. Les universitaires ne sont pas des journalistes. Leur travail doit rester pertinent sur le long-terme.",
+        "titre3": "Demande de l’aide",
+        "text3": "  Trouve une opportunité d’obtenir de l’aide de tes collègues ou de chercheurs pour compléter tes recherches. Si tu es face à une difficulté ne la dissimule . Parles-en à ton superviseur de recherche.Il n’y a pas de honte de demander de l’aide. C’est en se taisant que le problème prendra plus de proportions.",
+        "titre4": "Comprends le but de ta soutenance",
+        "text4": "  Les examinateurs voudront savoir si tu as fait tes propres recherches, si tu as écrit ta thèse, si tu la comprends bien, si tu as bien traité tes questions de recherches et si elles sont bien formulées.",
+        "titre5": "Familiarise-toi avec ton public",
+        "text5": "Regarde les recherches menées par tes examinateurs, cela t’aidera à cerner le genre de questions qu’ils pourraient te poser.",
+        "titre6": "Ne vous éparpillez pas",
+        "text6": "La recherche du sujet comporte un grand risque de t’éparpiller, ce qui est contreproductif. Plus vite tu mettras le doigt sur le sujet que tu souhaites traiter et le mieux ce sera. Identifie les catégories que tu souhaites traiter, jusqu’à ce que tu trouves ton sujet. Sois précis."
+      },
+      "calendrier": {
+        "calendrier": "Calendrier",
+        "calendrier-prof": "Calendrier Professeur",
+        "calendrier-doctorant": "Calendrier Doctorant et Candidat"
+      }
+    },
+    "connexion": {
+      "candidat": "Candidat",
+      "professeur": "Professeur",
+      "directeur_ced": "Directeur du centre d'études doctorales",
+      "directeur_pole": "Directeur de pole",
+      "directeur_labo": "Directeur du laboratoire",
+      "scolarite": "Scolarite"
+    },
+    "auth": {
+      "login": {
+        "email": "Email",
+        "nom_utilisateur": "Nom d'utilisateur",
+        "mot_de_passe": "Mot de passe",
+        "pas_de_compte": "Vous n'avez pas un compte ?",
+        "inscription": "Inscrivez-vous ici",
+        "login": "se connecter"
+      }
+    },
+    "candidat": {
+      "deconnexion": "déconnexion",
+      "informations_personnels": "Informations Personnelles",
+      "info_perso": {
+        "photo_courant": "photo courant",
+        "importer_photo_profil": "Importer votre Photo du Profil",
+        "Nom": "Nom",
+        "Prenom": "Prénom",
+        "CIN": "CIN | Code d'identité National ",
+        "CNE": "CNE | Code National d'étudiant",
+        "Prenom_ar": "Prénom en arabe",
+        "Nom_ar": "Nom en arabe",
+        "date_naissance": "Date de naissance",
+        "lieu_naissance": "Lieu de naissance en Francais",
+        "lieu_naissance_ar": "Lieu de naissance en Arabe",
+        "adresse_residence": "Adresse de résidence",
+        "ville_naissance": "Ville de naissance en francais",
+        "ville_naissance_ar": "Ville de naissance en arabe",
+        "sexe": "Sexe",
+        "fonctionnaire": "Fonctionnaire",
+        "telephone": "Téléphone",
+        "Pays": "Pays",
+        "confirmer": "Confirmer",
+        "masculine": "Masculin",
+        "feminine": "Féminin"
+      },
+      "parcours": {
+        "BAC": "BACCALAUREAT",
+        "DUT": "Diplome Universitaire de Technologie",
+        "DEUG": "Diplome Universitaire Général",
+        "DEUST": "Diplome Universitaire Scientifiques et Techniques",
+        "BTS": "Brevet Technicien Supérieur ",
+        "LICENCE_PROFESSIONNELLE": "Licence Professionnelle",
+        "MASTER": "Master Fondamentale",
+        "MASTER_SPECIALISE": "Master Spécialisé",
+        "description-master-pro": "la disposition du diplome Master Spécialisé est non obligatoire pour passer au autres diplomes",
+        "DTS": "Diplome de Technicien Spécialisé",
+        "CI": "Diplome d'Ingénieur",
+        "LICENCE": "Licence",
+        "MASTER_EN_SCIENCE_TECHNIQUE": "Master en Science et Technique",
+        "DOCTORATE_EN_MEDICINE": "Doctorat en Médicine",
+        "description-master-st": "la disposition du Master sciences et techniques est non obligatoire pour passer au autres diplomes",
+        "description-medecine": "la disposition du doctorat en medecine est non obligatoire pour passer au autres diplomes",
+        "description-licence": "la disposition du diplome Licence est non obligatoire pour passer au autres diplomes",
+        "description-dts": "la disposition du Dts est non obligatoire pour passer au autres diplomes",
+        "description-bts": "la disposition du bts est non obligatoire pour passer au autres diplomes",
+        "description-deust": "la disposition du Deust est non obligatoire pour passer au autres diplomes",
+        "description-deug": "la disposition du Deug est non obligatoire pour passer au autres diplomes",
+        "decription-dut": "ne remplissez ce formulaire si vous seulement disposez dut sinon veuillez l'ignorer",
+        "decription-bac": "la disposition du diplome bac est obligatoire pour passer au autres diplomes",
+        "parcours": "Parcours",
+        "intitulé": "Intitulé",
+        "type": "Type",
+        "spécialité": "Spécialité",
+        "date": "date d'obtention",
+        "ville": "Ville",
+        "pays": "Pays",
+        "province": "Province",
+        "mention": "Mention",
+        "université": "Université",
+        "etablissement": "Etablissement",
+        "moyenne": "Moyenne génerale",
+        "diplome": "Diplôme",
+        "releves": "Relevés de notes",
+        "fichier_courant": "Fichier Courant",
+        "choix_fichier": "Choisir un fichier"
+      },
+      "parcours_": {
+        "professeur": "Professeur",
+        "sujet": "Sujet",
+        "action": "Action",
+        "laboratoire": "Laboratoire",
+        "ced": "ced",
+        "formation doctorale": "formation doctorale"
+      },
+      "postuler": "Postuler",
+      "postuler_details": {
+        "conseil_1": "Rechercher l'axe de recherche ou le titre du sujet",
+        "conseil_2": "En bas de la page cliquer sur postuler pour confirmer votre choix / POSTULER",
+        "conseil_3": "En bas de la page va apparaitre votre choix. Attention,certains axes de recherches ou sujets demandent de charger votre projet de recherche correspondant. Si c'est le cas charger votre projet de recherche en format pdf/"
+      },
+      "notifications": "Notifications",
+      "notifications_details": {
+        "conseil_1": "Nous vous invitons à participer à l'entretien de notre commission qui se tiendra le",
+        "liste_principale": "Liste principale",
+        "liste_d'attente": "Liste d'attente (dêpot de dossier de 14h à 16h au CED Dhar Mahraz)",
+        "aide_infos": "Aide et compléments d'information",
+        "conseil_2": "Cliquer sur Résultats pour voir les sujets dans lesquels vous êtes accepté en liste principale. Dans le cas où vous recevez une notification de résultats portant le sujet et la mention (Liste Principale ), imprimer la demande d'inscription correspondante à votre choix pour inscription et compléter votre dossier par les pièces définies dans document à fournir ci-dessous.",
+        "piece_fournir": "pièces a fournir"
+      }
+    }
+  }

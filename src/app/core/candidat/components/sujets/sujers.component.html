@@ -1,0 +1,46 @@
+
+      
+      <app-alert *ngIf="alert" [data]="alert"></app-alert>
+        <div class="text-center" *ngIf="isFetchingItems">
+          <h4>
+            <img
+              src="/assets/images/connexion/loading.webp"
+              width="300"
+              height="100"
+            />
+          </h4>
+        </div>
+        <p class="p-3 text-primary text-center border border-primary" *ngIf="NoSujets"><i class="bi bi-card-checklist"></i> {{message}}</p>
+        <h5
+        *ngIf="errorText"
+        class="col-sm-12 col-lg-5 text-light text-center bg-danger m-auto p-3"
+      >
+        {{ errorText }}
+      </h5>
+    <div class="" style="width: 100%">
+    <ul class="list-group list-group-flush">
+
+      <li class="card list-group-item my-3 shadow border border-primary" *ngFor="let s of sujets" >
+        <p><span class="fs-6 fw-bold text-primary">Sujet | Axe | Thème : </span> {{s.sujet.titre}}</p>
+        <p> <span class="fs-6 fw-bold text-primary">Professeur : </span> {{s.sujet.professeur.prenom}} {{s.sujet.professeur.nom}}</p>
+        <p *ngIf="s.pathFile" class="fs-bold"> <span class="fs-6 fw-bold text-primary">projet de thèse importé : </span> {{s.pathFile.substring(s.pathFile.lastIndexOf('/') + 1)}}</p>
+        <form [formGroup]="Sujetform" (ngSubmit)="updatePostuler(s)">
+        <div class="border p-1 d-flex justify-content-between align-items-center">
+          <p class="fs-bold text-danger">importer votre projet de thèse :</p>
+          <input   
+                type="file"
+                accept="application/pdf"
+                formControlName="pathFile"
+                [writeFile]="true"
+                (change)="onFileSelected($event, 'dfile')" 
+          />
+          <button class="btn btn-primary m-1" type="submit">confirmer</button>
+        </div>
+        </form>
+
+        <button class="my-3 btn btn-primary" (click)="delete(s)"><i class="bi bi-trash3-fill fs-23 text-white text-primary"></i> supprimer de mes choix </button>
+      </li>
+    </ul>
+</div>
+
+        

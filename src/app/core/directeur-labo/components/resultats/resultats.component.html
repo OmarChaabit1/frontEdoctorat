@@ -1,0 +1,46 @@
+<app-alert [data]="alert"></app-alert>
+<div class="container-fluid mt-3">
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr class="table-primary">
+          <th scope="col" class="w-7">CNE</th>
+          <th scope="col" class="w-15" data-field="sujet">sujet</th>
+          <th scope="col" class="w-13">Candidat</th>
+          <th scope="col" class="w-13">Note dossier</th>
+          <th scope="col" class="w-43">Note entretien</th>
+          <th scope="col" class="w-13">Moyenne generale</th>
+          <th scope="col" class="w-13">Decision</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cInfos of candidatInfos.results">
+          <td class="text-primary fs-bold">{{ cInfos.candidat.cne }}</td>
+          <td>{{ cInfos.sujet.titre }}</td>
+          <td>{{ cInfos.candidat.prenom }} {{ cInfos.candidat.nom }}</td>
+          <td>{{ cInfos.noteEntretien }}</td>
+          <td>{{ cInfos.noteDossier }}</td>
+          <td>{{ (cInfos.noteDossier + cInfos.noteEntretien) / 2 }}</td>
+          <td>{{ cInfos.decision }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div *ngIf="isFetchingItems">
+      <h4>
+        <img
+          src="/assets/images/connexion/loading.webp"
+          width="300"
+          height="100"
+        />
+      </h4>
+    </div>
+
+    <app-offsetpagination
+      [itemsCount]="itemsCount"
+      [itemsPerPage]="50"
+      (indexChange)="onIndexChange($event)"
+      *ngIf="candidatInfos['length'] > 0"
+    ></app-offsetpagination>
+  </div>
+</div>

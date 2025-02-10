@@ -1,0 +1,94 @@
+<app-alert [data]="alert"></app-alert>
+<!-- <app-alert *ngIf="loading" [data]="alert"></app-alert> -->
+
+<div class="container-fluid mt-3">
+  <div class="table-responsive">
+    <table class="table table-align-middle">
+      <thead>
+        <tr class="table-primary">
+          <th scope="col" class="w-7">cne</th>
+          <th scope="col" class="w-15">nom</th>
+          <th scope="col" class="w-13">prenom</th>
+          <th scope="col" class="w-43">axe | titre</th>
+          <!-- <th scope="col" class="w-13">action</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let i of inscriptions">
+          <td>{{ i.candidat.cne }}</td>
+          <td>{{ i.candidat.nom }}</td>
+          <td>{{ i.candidat.prenom }}</td>
+          <td>{{ i.sujet.titre }}</td>
+          <!-- <td>
+            <button
+              class="btn btn-primary modifier-btn"
+              data-toggle="modal"
+              data-target="#exampleModalCenter"
+              (click)="fun(mymodal, i.sujet)"
+            >
+              Modifier le titre
+            </button>
+          </td> -->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <app-offsetpagination
+    [itemsCount]="itemsCount"
+    [itemsPerPage]="50"
+    (indexChange)="onIndexChange($event)"
+    *ngIf="inscriptions.length > 0"
+  ></app-offsetpagination>
+</div>
+
+<!-- Modal -->
+<!-- <ng-template
+  class="modal fade"
+  tabindex="-1"
+  role="dialog"
+  #mymodal
+  let-modal
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered w-100" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">
+          Modification du titre
+        </h5>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="form" (ngSubmit)="onClickSubmit()">
+          <label for="sujetTitre" class="mb-3">Titre</label>
+          <textarea
+            maxlength="500"
+            type="text"
+            class="form-control"
+            id="sujetTitre"
+            aria-describedby="emailHelp"
+            placeholder="500 characters"
+            formControlName="titre"
+          ></textarea>
+          <div class="modal-footer">
+            <button
+              class="btn btn-secondary"
+              data-dismiss="modal"
+              (click)="modal.dismiss('Cross click')"
+              type="button"
+            >
+              annuler
+            </button>
+            <button
+              class="btn btn-primary btn-confirmer"
+              (click)="modal.close('Save click')"
+              [disabled]="form.invalid"
+              type="submit"
+            >
+              confirmer
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</ng-template> -->

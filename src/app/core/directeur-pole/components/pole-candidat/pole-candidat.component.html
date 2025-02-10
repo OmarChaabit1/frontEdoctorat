@@ -1,0 +1,51 @@
+<!-- <app-alert *ngIf="alert" [data]="alert"></app-alert>
+<app-alert *ngIf="loading" [data]="alert"></app-alert> -->
+<app-alert [data]="alert"></app-alert>
+<div class="container-fluid mt-3">
+  <div class="table-responsive">
+    <table class="table table-align-middle">
+      <thead>
+        <tr class="table-primary">
+          <th scope="col" class="w-7">Titre Sujet</th>
+          <th scope="col" class="w-23">Directeur</th>
+          <th scope="col" class="w-7">Co-Directeur</th>
+          <th
+            data-field="CNE"
+            data-filter-control="input"
+            data-sortable="true"
+            scope="col"
+            class="w-7"
+          >
+            CNE
+          </th>
+          <th scope="col" class="w-15">Nom</th>
+          <th scope="col" class="w-15">Prenom</th>
+          <th scope="col" class="w-23">Labo</th>
+          <th scope="col" class="w-23">Formation Doctorale</th>
+          <th scope="col" class="23">CED</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of candidats">
+          <td>{{ c.sujet.titre }}</td>
+          <td>{{ c.sujet.professeur.nom }} {{ c.sujet.professeur.prenom }}</td>
+          <td>
+            {{ c.sujet["coDirecteur"] }}
+          </td>
+          <td>{{ c.candidat.cne }}</td>
+          <td>{{ c.candidat.nom }}</td>
+          <td>{{ c.candidat.prenom }}</td>
+          <td>{{ c.sujet["laboratoire"] }}</td>
+          <td>{{ c.sujet["formationDoctorale"] }}</td>
+          <td>{{ c.sujet["ced"] }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <app-offsetpagination
+    [itemsCount]="itemsCount"
+    [itemsPerPage]="50"
+    (indexChange)="onIndexChange($event)"
+    *ngIf="candidats.length > 0"
+  ></app-offsetpagination>
+</div>

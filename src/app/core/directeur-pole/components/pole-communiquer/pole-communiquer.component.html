@@ -1,0 +1,168 @@
+<app-alert *ngIf="alert" [data]="alert"></app-alert>
+<div class="container col-lg-12" style="margin-top: 30px">
+  <div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button
+          class="accordion-button"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseOne"
+          aria-expanded="true"
+          aria-controls="collapseOne"
+        >
+          Sujets
+        </button>
+      </h2>
+      <div
+        id="collapseOne"
+        class="accordion-collapse collapse show"
+        aria-labelledby="headingOne"
+        data-bs-parent="#accordionExample"
+      >
+        <div class="accordion-body">
+          <form class="row g-3">
+            <div class="col-md-4">
+              <h5>Sujets</h5>
+            </div>
+            <div class="col-md-4">
+              <div class="form-check form-switch">
+                <label class="form-check-label me-2" for="flexSwitchCheckDefault"
+                  >Publier
+                </label>
+                <button
+              class="btn btn-primary btn-confirmer"
+              type="button"
+              (click)="publierSujet()"
+            >
+              confirmer
+            </button>
+              </div>
+              <!-- <div class="input-group">
+              <h5 class="publier">Publier </h5>
+              <div class="switch">
+              <input type="checkbox" id="publierSujets" data-id-prof="$ prof.idProfesseur "/>
+              <label for="publierSujets"></label>
+            </div>
+            </div> -->
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button
+          class="accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseTwo"
+          aria-expanded="false"
+          aria-controls="collapseTwo"
+        >
+          Liste Principale
+        </button>
+      </h2>
+      <div
+        id="collapseTwo"
+        class="accordion-collapse collapse"
+        aria-labelledby="headingTwo"
+        data-bs-parent="#accordionExample"
+      >
+        <div class="accordion-body">
+          <form class="row g-3">
+            <div class="col-md-4">
+              <h5>Liste Principale</h5>
+            </div>
+            <div class="col-md-4">
+              <a
+                href="/candidat/listes_principales"
+                style="font-size: 19px; text-decoration: none"
+                download
+                ><i class="fas fa-download"></i>Télécharger</a
+              >
+            </div>
+            <div class="col-md-4">
+              <div class="form-check form-switch">
+                <label class="form-check-label me-2" for="flexSwitchCheckChecked"
+                  >Publier
+                </label>
+                <button
+              class="btn btn-primary btn-confirmer"
+              type="submit"
+              (click)="publierListePrincipale()"
+            >
+              confirmer
+            </button>
+              </div>
+              <!-- <div class="input-group">
+              <h5 class="publier">Publier </h5>
+              <div class="switch">
+              <input type="checkbox" id="publierSujets" data-id-prof="$ prof.idProfesseur "/>
+              <label for="publierSujets"></label>
+            </div>
+            </div> -->
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingThree">
+        <button
+          class="accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseThree"
+          aria-expanded="false"
+          aria-controls="collapseThree"
+        >
+          Liste D'attente
+        </button>
+      </h2>
+      <div
+        id="collapseThree"
+        class="accordion-collapse collapse"
+        aria-labelledby="headingThree"
+        data-bs-parent="#accordionExample"
+      >
+        <div class="accordion-body">
+          <form class="row g-3">
+            <div class="col-md-4">
+              <h5>Liste D'attente</h5>
+            </div>
+            <div class="col-md-4">
+              <a
+                href="/candidat/listes_attentes"
+                style="font-size: 19px; text-decoration: none"
+                download
+                ><i class="fas fa-download"></i> Télécharger</a
+              >
+            </div>
+            <div class="col-md-4">
+              <div class="form-check form-switch">
+                <label class="form-check-label me-2" for="flexSwitchCheckChecked"
+                  >Publier
+                </label>
+                <button
+              class="btn btn-primary btn-confirmer"
+              type="submit"
+              (click)="publierListeAttente()"
+            >
+              confirmer
+            </button>
+              </div>
+              <!-- <div class="input-group">
+              <h5 class="publier">Publier </h5>
+              <div class="switch">
+              <input type="checkbox" id="publierSujets" data-id-prof="$ prof.idProfesseur "/>
+              <label for="publierSujets"></label>
+            </div>
+            </div> -->
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

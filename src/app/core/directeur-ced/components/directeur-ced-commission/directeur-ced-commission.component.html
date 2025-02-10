@@ -1,0 +1,54 @@
+<app-alert *ngIf="alert" [data]="alert"></app-alert>
+<app-alert *ngIf="loading" [data]="alert"></app-alert>
+
+
+
+<div class="container-fluid mt-3">
+
+    <div class="table-responsive">
+
+        <table class="table table-align-middle">
+            <thead>
+                <tr class="table-primary">
+                    <th scope="col" class="w-7">date</th>
+                    <th scope="col" class="w-23">Lieu</th>
+                    <th scope="col" class="w-7">Heure</th>
+                    <th scope="col" class="w-23">Sujets</th>
+                    <th scope="col" class="w-23">Membres</th>
+                    <th scope="col" class="w-23">laboratoire</th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+
+
+
+                <tr *ngFor="let c of commissions">
+                    <td>{{ c.dateCommission }}</td>
+                    <td>{{ c.heure }}</td>
+                    <td>{{ c.lieu }}</td>
+                    <td>
+                        <ul>
+                            <li *ngFor="let s of c.sujets">
+                                {{ s.titre }}
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li *ngFor="let p of c.participants">
+                                {{ p.nom }} {{ p.prenom }}
+                            </li>
+                        </ul>
+                    </td>
+                    
+                    <td>{{ c.labo }}</td>
+
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</div>

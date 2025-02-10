@@ -1,0 +1,55 @@
+<div class="container-fluid">
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand"> <img
+      class="img-fluid img-thumbnail"
+      src="/assets/images/usmba-logo.png"
+      width="180"
+      height="40"
+      alt=""
+      srcset=""
+    /></a>
+    <div class="d-flex justify-content-around align-items-center w-70">
+      <img
+      class="img-thumbnail mx-3"
+      [src]="  '/assets/images/unknown_pic.jpg' " alt="image prof"
+      width="50"
+      height="50"
+      alt=""
+      srcset=""
+    />
+    <div class="d-flex justify-content-center align-items-center ">
+    <span class="text-start"></span>
+  </div> 
+
+    <button class="btn btn-primary btn-sm mx-3" type="button" (click)="logout()">
+      <i class="bi bi-box-arrow-right"></i>
+      deconnexion
+    </button>
+    </div>
+  </div>
+</nav>
+</div>     
+
+<div class="d-flex justify-content-center align-items-center border border-primary">
+<nav class="navbar navbar-expand-lg navbar-light text-primary">
+    <div class="container-fluid">
+      <button class="navbar-toggler mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+
+             <button class="btn btn-outline-primary mx-3" routerLinkActive="active" routerLink="/pole/sujets" type="button">Sujets</button>
+             <button class="btn btn-outline-primary mx-3" routerLinkActive="active" routerLink="/pole/candidat">Candidats</button>
+             <button class="btn btn-outline-primary mx-3" routerLinkActive="active" routerLink="/pole/commission">Commissions</button>
+             <button class="btn btn-outline-primary mx-3" routerLinkActive="active" routerLink="/pole/calendrier">Calendrier</button>
+             <button class="btn btn-outline-primary mx-3" routerLinkActive="active" routerLink="/pole/communiquer">Communiquer</button>
+             <button class="btn btn-outline-primary mx-3" routerLinkActive="active" routerLink="/pole/inscription" >Inscription</button>
+        
+          </div>
+      </div>
+    </div>
+  </nav>
+  </div>
+

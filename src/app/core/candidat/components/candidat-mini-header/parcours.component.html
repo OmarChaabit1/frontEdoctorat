@@ -1,0 +1,38 @@
+<div class="container-fluid">
+
+  <div class="progress mb-3 border border-primary">
+    <div class="progress-bar" [class]="SuccessParcours ? 'bg-success' : 'bg-primary' " role="progressbar" [style.width]="progressBarvalue+'%'" [attr.aria-valuenow]="progressBarvalue.toString()" aria-valuemin="0" aria-valuemax="100"></div>
+  </div>
+
+  <div>
+    <p>{{message}}</p>
+  </div>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light border border-primary">
+
+
+    <ul class="navbar-nav m-auto">
+     
+      <li class="nav-item dropdown">
+        <a routerLinkActive="_active" class="nav-link dropdown-toggle brand-primary text-primary font-weight-bold" id="reglements" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Parcours
+        </a>
+        <ul class="dropdown-menu " aria-labelledby="reglements">
+
+          <li>
+            
+            <a class="dropdown-item" [routerLink]="p.value" routerLinkActive="active" *ngFor="let p of parcours"> {{'candidat.parcours.'+p.name | translate }}</a>
+            
+          
+          </li>
+          
+        </ul>
+      </li>
+     
+     
+    </ul>
+    
+
+</nav>
+<router-outlet></router-outlet>
+</div>

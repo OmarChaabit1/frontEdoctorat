@@ -1,0 +1,5 @@
+li.disabled{
+    cursor: not-allowed;
+    opacity: .7;
+    pointer-events: none;
+   }

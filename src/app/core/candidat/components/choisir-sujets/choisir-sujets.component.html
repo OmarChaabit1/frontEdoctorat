@@ -1,0 +1,129 @@
+<app-alert *ngIf="alert" [data]="alert"></app-alert>
+<div *ngIf="isFetchingItems">
+  <h4>
+    <img
+      src="/assets/images/connexion/loading.webp"
+      width="300"
+      height="100"
+    />
+  </h4>
+</div>
+<div *ngIf="!isFetchingItems" class="p-1">
+  <button type="button" class="btn btn-primary" routerLink="/candidat/sujets_choisies">
+    <i class="bi bi-cart"></i><span class="badge badge-light">{{nbrSujets}} Sujets</span>
+  </button>
+  </div>
+<ol class="list-group list-group-flush">
+  <li class="list-group-item">
+    {{'candidat.postuler_details.conseil_1' | translate }}
+
+  </li>
+  <li class="list-group-item">
+    {{'candidat.postuler_details.conseil_2' | translate }}
+  </li>
+  <li class="list-group-item">
+   {{'candidat.postuler_details.conseil_3' | translate }}
+  </li>
+
+</ol>
+
+<div class="col-12 mt-5">
+  <div class="d-flex justify-content-between align-items-center my-3">
+    <div class="col-3">
+      <input
+        class="form-control"
+        type="text"
+        name=""
+        [(ngModel)]="labo"
+        (ngModelChange)="searchLabo()"
+        [ngModelOptions]="{ standalone: true }"
+        pattern="[0-9]*(\.[0-9]+)?"
+        placeholder="par labo"
+      />
+    </div>
+
+    <div class="col-3">
+      <input
+        class="form-control"
+        type="text"
+        name=""
+        [(ngModel)]="sujet"
+        (ngModelChange)="searchSujet()"
+        [ngModelOptions]="{ standalone: true }"
+        pattern="[0-9]*(\.[0-9]+)?"
+        placeholder="par sujet"
+      />
+    </div>
+
+    <div class="col-3">
+      <input
+        class="form-control"
+        type="text"
+        name=""
+        [(ngModel)]="formationDotorale"
+        (ngModelChange)="searchFormation()"
+        [ngModelOptions]="{ standalone: true }"
+        pattern="[0-9]*(\.[0-9]+)?"
+        placeholder="par formation doctorale"
+      />
+    </div>
+  </div>
+
+  <table class="table table-responsive table-bordered">
+    <thead>
+      <tr class="table-primary">
+        <th scope="col" class="w-7">action</th>
+        <th scope="col" class="w-32">Laboratoire</th>
+        <th scope="col" class="w-16">Prof</th>
+        <th scope="col" class="w-20">Sujet</th>
+        <th scope="col" class="w-16">CED</th>
+        <th scope="col" class="w-17">Formation doctorale</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="!isFetchingItems">
+      <tr *ngFor="let s of sujets">
+        <td>
+          <input
+            [disabled]="
+              selectedSubjectsId.length >= maxSujets &&
+              selectedSubjectsId.indexOf(s.id) === -1
+            "
+            class="form-check form-check-lg"
+            name="btSelectItem"
+            type="checkbox"
+            (change)="onSelectSubjet($event, s.id)"
+            [checked]="selectedSubjectsId.indexOf(s.id) > -1"
+          />
+        </td>
+        <td>
+          {{ s.formationDoctorale.titre }}
+        </td>
+        <td>{{ s.professeur.prenom }} {{ s.professeur.nom }}</td>
+        <td>
+          {{ s.titre }}
+        </td>
+        <td>
+          {{ s.formationDoctorale["ced"]["titre"] }}
+        </td>
+        <td>
+          {{ s.formationDoctorale.titre }}
+        </td>
+      </tr>
+    </tbody>
+    <div *ngIf="isFetchingItems">
+      <h4>
+        <img
+          src="/assets/images/connexion/loading.webp"
+          width="300"
+          height="100"
+        />
+      </h4>
+    </div>
+  </table>
+  <app-offsetpagination
+    [itemsCount]="itemsCount"
+    [itemsPerPage]="50"
+    (indexChange)="onIndexChange($event)"
+    *ngIf="sujets.length > 0"
+  ></app-offsetpagination>
+</div>

@@ -1,0 +1,67 @@
+
+
+<h5 *ngIf="showError" class="col-sm-12 col-lg-5 text-light text-center  bg-danger m-auto p-3">{{ errorText }}</h5>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+<div class="container-fluid">
+
+  <div class="col-sm-12 col-lg-5 m-auto form-group mt-3">
+
+    <label class="form-label font-weight-bold fs-3" for="email"><i class="bi bi-envelope"></i> {{ 'auth.login.email' |translate}}</label>
+    <input
+      
+      class="form-control"
+      id="email"
+      
+      type="email"
+      formControlName="email"
+      name="email"
+      placeholder=" {{ 'auth.login.email' |translate}}"
+    />
+
+  </div>
+
+  <div class="col-sm-12 col-lg-5 m-auto form-group mt-3">
+
+  <label class="form-label font-weight-bold fs-3" for="password"><i class="bi bi-key"></i> {{ 'auth.login.mot_de_passe' |translate}}</label>
+
+  <input
+  class="form-control mb-3"
+    id="password"
+    type="password"
+    formControlName="password"
+    name="password"
+    placeholder=" {{ 'auth.login.mot_de_passe' |translate}}"
+  />
+  <input
+    class="btn btn-outline-primary"
+    *ngIf="!showLoading"
+    type="submit"
+    [disabled]="!form.valid"
+    value="{{'auth.login.login' | translate}}"
+  />
+ </div>
+
+
+  <div class="col-sm-12 col-lg-5 m-auto form-group mt-3">
+  <h4 *ngIf="showLoading"><img src="/assets/images/connexion/loading.webp" width="300" height="100" /></h4>
+  <div class="my-3 d-flex justify-content-between align-items-center">
+  <div>
+        <a class="my-3" class="btn btn-primary" routerLink="/home/candidat/pre-register"
+            > <i class="bi bi-box-arrow-right"></i> {{'auth.login.inscription' | translate }}</a
+          >
+    </div>
+    <div>
+    <a class="my-3" class="btn btn-primary" routerLink="/home/candidat/recover_password"
+        >récupérer mon mot de passe</a
+      >
+</div>
+</div>
+</div>
+
+</div>
+</form>
+
+
+

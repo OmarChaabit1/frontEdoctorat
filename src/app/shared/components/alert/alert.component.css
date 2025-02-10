@@ -1,0 +1,31 @@
+.alert__ {
+    position: fixed;
+    right: 0;
+    top: 10;
+    z-index: 10;
+    margin-inline-end: 1rem;
+    margin-block-start: 0.5rem;
+    padding: 0.3rem;
+    border-radius: 7px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    height: fit-content;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.5rem;
+    animation: slidein 200ms ease forwards;
+}
+p {
+    margin: 0;
+    padding: 0;
+}
+
+@keyframes slidein {
+    from {
+        transform: translateX(150%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}

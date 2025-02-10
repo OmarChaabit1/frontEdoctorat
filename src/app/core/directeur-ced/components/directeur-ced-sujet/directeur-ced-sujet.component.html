@@ -1,0 +1,45 @@
+<app-alert *ngIf="alert" [data]="alert"></app-alert>
+<app-alert *ngIf="loading" [data]="alert"></app-alert>
+
+
+<div class="container-fluid mt-3">
+
+    <div class="table-responsive">
+
+        <table class="table table-align-middle">
+            <thead>
+                <tr class="table-primary">
+                    <th scope="col" class="w-7">Titre Sujet</th>
+                    <th scope="col" class="w-23">Description</th>
+                    <th scope="col" class="w-7">co-directeur</th>
+                    <th scope="col" class="w-23">Formation Doctorale</th>
+
+
+                </tr>
+            </thead>
+            <tbody *ngIf="!isFetchingItems">
+                <tr class="align-text-bottom" *ngFor="let s of sujets">
+                    <td>{{ s.titre }}</td>
+                    <td>{{ s?.description }}</td>
+                    <td>{{ s.coDirecteur?.nom }} {{ s.coDirecteur?.prenom }}</td>
+                    <td>{{ s.formationDoctorale?.titre }}</td>
+
+                </tr>
+
+
+            </tbody>
+            <div *ngIf="isFetchingItems">
+                <h4>
+                    <img src="/assets/images/connexion/loading.webp" width="300" height="100" />
+                </h4>
+            </div>
+        </table>
+        <app-offsetpagination
+        [itemsCount]="itemsCount"
+        [itemsPerPage]="50"
+        (indexChange)="onIndexChange($event)"
+        *ngIf="sujets.length > 0"
+      ></app-offsetpagination>
+
+    </div>
+</div>

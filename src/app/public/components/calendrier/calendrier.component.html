@@ -1,0 +1,47 @@
+
+
+<div class="container-fluid mt-10">
+
+    <div class="row">
+
+      <h3 class="text-color bg-white mt-3 my-3 border-start border-primary border-3 text-start p-3 rounded"><i class="bi bi-calendar4-week"></i> {{'home.calendrier.calendrier'| translate}}<div *ngIf="isFetchingInfo">
+        <h4 class="mt-3">
+            <img src="/assets/images/connexion/loading.webp" width="300" height="100" />
+        </h4>
+    </div></h3>
+      
+    
+<div *ngIf="!isFetchingInfo" class="card col-5 m-auto">
+  
+  <div class="bg-image hover-zoom">
+    <img class="card-img-top " src="/assets/images/home/calendrier/etudiant_calendrier1.jpg" alt="Card image cap">
+  </div>
+    <div class="card-body">
+        <h5 class="card-title p-3 border-start border-bottom border-end shadow rounded border-3 border-primary text-color text-center"><i class="bi bi-person-workspace"></i> {{'home.calendrier.calendrier-prof'| translate}}</h5>
+  
+      </div>
+      <h5
+        *ngIf="errorText"
+        class="col-sm-12 col-lg-5 text-white text-center bg-danger m-auto p-3"
+      >
+        {{ errorText }}
+      </h5>
+      <ul class="list-unstyled" *ngFor="let b of CalendarProf">
+        <li class="list-group-item calendar-text text-color"><i class="bi bi-list"></i> {{b?.action}} de <span class="text-primary fw-bold">{{b?.dateDebut}}</span>  à <span class="text-danger fw-bold">{{b?.dateFin}}</span>
+        </li>
+      </ul>
+  </div>
+
+  <div *ngIf="!isFetchingInfo" class="card col-5 m-auto">
+    <img class="card-img-top" src="/assets/images/ced/team2.JPG" alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title border-start border-bottom border-end shadow rounded border-3 border-primary p-3 text-color text-center"><i class="bi bi-people"></i> {{'home.calendrier.calendrier-doctorant'| translate}}</h5>
+      </div>
+      <ul class="list-unstyled" *ngFor="let k of CalendarDoctorant">
+        <li class="list-group-item calendar-text text-color"><i class="bi bi-list fw-bold text-primary"></i> {{k.action}} de <span class="text-primary fw-bold">{{k.dateDebut}}</span>  à <span class="text-danger fw-bold">{{k.dateFin}}</span> </li>
+      </ul>
+  </div>
+
+    </div>
+
+</div>

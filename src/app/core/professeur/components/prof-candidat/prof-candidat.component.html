@@ -1,0 +1,35 @@
+<app-alert *ngIf="alert" [data]="alert"></app-alert>
+<app-alert *ngIf="loading" [data]="alert"></app-alert>
+
+<div class="table-responsive my-3">
+<table class="table table-responsive">
+<thead>
+<tr class="table-primary">
+ <th class="w-10">Cne</th>
+ <th class="w-20">Candidat</th>
+ <th class="w-40">Sujet</th>
+ <th class="w-30">Projet de thèse</th>
+</tr>
+</thead>
+<tbody>
+<tr *ngFor = "let c of candidats_">
+
+    <td class="fs-bold text-primary"><button class="btn btn-light text-primary" type="button" (click)="voirProfile(c)">{{ c.candidat.cne }}</button></td>
+    <td>{{c.candidat.prenom}} {{c.candidat.nom}}</td>
+    <td>{{c.sujet.titre}}</td>
+    <td>
+    <a *ngIf="c.pathFile" target="_blank" class="btn btn-primary" [href]="c.pathFile"  download="pathFile">
+            <i class="bi bi-cloud-download text-light"></i>
+        télécharger
+    </a>
+
+    </td>
+
+</tr>
+</tbody>
+</table>
+</div>
+
+
+
+

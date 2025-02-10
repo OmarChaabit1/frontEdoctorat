@@ -1,0 +1,261 @@
+<div *ngIf="isFetchingInfo">
+    <h4>
+      <img src="/assets/images/connexion/loading.webp" width="300" height="100" />
+    </h4>
+  </div>
+  
+  <div *ngIf="!isFetchingInfo" class="row">
+    <h5
+      *ngIf="errorText"
+      class="col-sm-12 col-lg-5 text-light text-center bg-danger m-auto p-3"
+    >
+      {{ errorText }}
+    </h5>
+  
+    <div class="form-card my-3">
+      <h3 class="text-primary mt-3 border border-primary text-center p-3">
+        {{'candidat.parcours.CI' | translate}}
+      </h3>
+   
+  
+      <form [formGroup]="candidatCIForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="col-sm-9 col-lg-4">
+            <div class="form-group required">
+              <label class="col-form-label-sm control-label" for="intitule"
+                >{{'candidat.parcours.intitulé' | translate}}</label
+              >
+  
+              <input
+                type="text"
+                class="form-control form-control-sm dateCI"
+                required=""
+                id="intitule"
+                formControlName="intitule"
+                readonly
+              />
+            </div>
+          </div>
+  
+          <div class="col-sm-9 col-lg-4">
+            <div class="form-group required">
+              <label
+                class="col-form-label-sm control-label"
+                for="id_date_diplome_CI"
+                >{{'candidat.parcours.type' | translate}}</label
+              >
+              <input
+                class="form-control form-control-sm"
+                type="text"
+                formControlName="type"
+                readonly
+              />
+            </div>
+          </div>
+  
+          <div class="col-sm-3 col-lg-4 mb-3">
+            <div class="form-group required">
+              <label class="col-form-label-sm control-label" for="id_CI"
+                >{{'candidat.parcours.spécialité' | translate}}</label
+              >
+
+              <input
+              type="text"
+              value=""
+              class="form-control form-control-sm dateCI"
+              required=""
+              formControlName="specialite"
+            />
+              
+            </div>
+          </div>
+        </div>
+  
+        <div class="row mb-3">
+          <div class="col-lg-3">
+            <div class="form-group required">
+              <label
+                class="col-form-label-sm control-label"
+                for="id_date_diplome_CI"
+                >{{'candidat.parcours.date' | translate}}  {{'candidat.parcours.CI' | translate}}</label
+              >
+  
+              <input
+                type="date"
+                value=""
+                class="form-control form-control-sm dateCI"
+                required=""
+                id="id_date_diplome_CI"
+                formControlName="dateCommission"
+              />
+            </div>
+          </div>
+  
+          <div class="col-3">
+            <div class="form-group required">
+              <label class="col-form-label-sm control-label" for="id_Province_CI"
+                >{{'candidat.parcours.pays' | translate}}</label
+              >
+              <select
+                formControlName="pays"
+                class="form-control form-control-sm"
+                required=""
+                id="id_Province_CI"
+              >
+                <option
+                  value="{{ country.country }}"
+                  *ngFor="let country of countries"
+                >
+                  {{ country.country }}
+                </option>
+              </select>
+            </div>
+          </div>
+  
+          <div class="col-3">
+            <div class="form-group required">
+              <label class="col-form-label-sm control-label" for="id_ville_CI"
+                >{{'candidat.parcours.ville' | translate}}</label
+              >
+  
+              <input
+                class="form-control form-control-sm"
+                type="text"
+                formControlName="ville"
+              />
+            </div>
+          </div>
+  
+          <div class="col-3">
+            <div class="form-group required">
+              <label class="col-form-label-sm control-label">{{'candidat.parcours.province' | translate}}</label>
+              <input
+                type="text"
+                name="province"
+                value=""
+                class="form-control form-control-sm"
+                maxlength="50"
+                required=""
+                id="id_ville_CI"
+                formControlName="province"
+              />
+            </div>
+          </div>
+        </div>
+  
+        <div class="row mb-3">
+          <div class="col-md-4 col-lg-4 col-sm-6">
+            <div class="form-group required">
+              <label class="col-form-label-sm control-label" for="id_mentionCI"
+                >{{'candidat.parcours.mention' | translate}}</label
+              >
+              <select
+                formControlName="mention"
+                class="form-control form-control-sm"
+                id="id_mentionCI"
+              >
+                <option
+                  [selected]="candidatCI?.mention === m.value ? 'true' : 'false'"
+                  [value]="m.value"
+                  *ngFor="let m of mentions"
+                >
+                  {{ m.value }}
+                </option>
+              </select>
+            </div>
+          </div>
+  
+          <div class="col-md-4 col-lg-4 col-sm-6">
+            <div class="form-group required">
+              <label class="col-form-label-sm control-label" for="id_nom_CI"
+                >{{'candidat.parcours.etablissement' | translate}}
+              </label>
+              <input
+                type="text"
+                formControlName="etablissement"
+                class="form-control form-control-sm etablissementCI"
+                maxlength="50"
+                required=""
+                id="id_nom_CI"
+              />
+            </div>
+          </div>
+  
+          <div class="col-md-4 col-lg-4 col-sm-12">
+            <div class="form-group required">
+              <label class="col-form-label-sm control-label" for="id_moyenne_CI"
+                >{{'candidat.parcours.moyenne' | translate}} de tous les semestres:</label
+              >
+              <input
+                type="number"
+                step=".01"
+                max="20.0"
+                formControlName="moyen_generale"
+                class="form-control form-control-sm"
+                maxlength="50"
+                required=""
+                id="id_moyenne_CI"
+              />
+            </div>
+          </div>
+        </div>
+  
+        <div class="row mt-5">
+          <div class="mb-3">
+            <label for="CI_dip" class="form-label"
+              >{{'candidat.parcours.diplome' | translate}}  {{'candidat.parcours.CI' | translate}} pdf
+              <span class="text-danger h6"> < 4MO </span></label
+            >
+            <h6 class="text-primary" *ngIf="diplomeFileLink">
+              {{'candidat.parcours.fichier_courant' | translate}}: {{ diplomeFileLink }}
+            </h6>
+            <input
+              class="form-control diplomeCI"
+              type="file"
+              accept="application/pdf"
+              formControlName="diplomeFile"
+              [writeFile]="true"
+              (change)="onFileSelected($event, 'dfile')"
+            />
+          </div>
+  
+          <div class="mb-3">
+            <label for="relCI" class="form-label"
+              >{{'candidat.parcours.releves' | translate}} pdf
+              <span class="text-danger h6"> < 4MO </span></label
+            >
+            <h6 class="text-primary" *ngIf="releveFileLink">
+              {{'candidat.parcours.fichier_courant' | translate}}: {{ releveFileLink }}
+            </h6>
+            <input
+              class="form-control releveCI"
+              type="file"
+              id="relCI"
+              accept="application/pdf"
+              formControlName="relevefile"
+              [writeFile]="true"
+              (change)="onFileSelected($event, 'rfile')"
+            />
+          </div>
+        </div>
+   
+        <div
+          class="col col-sm-12 col-lg-6 d-flex justify-content-between align-items-center"
+        >
+          <button
+            class="btn btn-primary btn-sm"
+            type="submit"
+            [disabled]="!candidatCIForm.valid"
+            *ngIf="!isUpdating"
+          >
+            <i class="bi bi-check-circle"></i> {{'candidat.info_perso.confirmer' | translate }}
+  
+          </button>
+          <span *ngIf="isUpdating" class="spinner-grow text-primary spinner-grow-lg" role="status" aria-hidden="true"></span>
+        </div>
+       
+       
+      </form>
+    </div>
+  </div>
+  

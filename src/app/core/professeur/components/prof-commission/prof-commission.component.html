@@ -1,0 +1,31 @@
+<app-alert [data]="alert"></app-alert>
+<!-- <app-alert *ngIf="loading" [data]="alert"></app-alert> -->
+
+<div class="container-fluid mt-3">
+  <div class="table-responsive">
+    <table class="table table-align-middle">
+      <thead>
+        <tr class="table-primary">
+          <th scope="col" class="w-7">Date</th>
+          <th scope="col" class="w-23">Lieu</th>
+          <th scope="col" class="w-7">heure</th>
+          <th scope="col" class="w-23">membres</th>
+          <th scope="col" class="23">examiner</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of commissions">
+          <td>{{c.dateCommission}}</td>
+          <td>{{c.heure}}</td>
+          <td>{{c.lieu}}</td>
+          <td>
+            <ul>
+              <li *ngFor="let p of c.participants">{{p.nom}} {{p.prenom}}</li>
+            </ul>
+          </td>
+          <td>PV de la comission</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

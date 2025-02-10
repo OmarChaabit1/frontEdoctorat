@@ -1,0 +1,178 @@
+<div *ngIf="isFetchingInfo">
+  <h4>
+    <img src="/assets/images/connexion/loading.webp" width="300" height="100" />
+  </h4>
+</div>
+
+<div *ngIf="!isFetchingInfo" class="row">
+  <h5
+    *ngIf="errorText"
+    class="col-sm-12 col-lg-5 text-light text-center bg-danger m-auto p-3"
+  ></h5>
+
+  <section class="bg-white container-fluid">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="card mb-4">
+            <div class="card-body" class="bg-light"></div>
+            <div class="card-body text-center img">
+              <img
+                [src]="
+                  candidat?.pathPhoto
+                    ? str + candidat?.pathPhoto
+                    : '/assets/images/unknown_pic.jpg'
+                "
+                alt="image candidat"
+                alt="avatar"
+                class="img-fluid"
+              />
+              <h5 class="my-3">{{ candidat.prenom }} {{ candidat.nom }}</h5> 
+
+              <p class="mb-3">{{ candidat.email }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="card mb-4">
+            <div class="card-body">
+              <h3 class="mb-2">Information personelles</h3>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Nom</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">{{ candidat.nom }}</p>
+                    </div>
+                  </div>
+                  <hr />
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">prenom</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">{{ candidat.prenom }}</p>
+                    </div>
+                  </div>
+
+                  <hr />
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">cin</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">{{ candidat.cin }}</p>
+                    </div>
+                  </div>
+                  <hr />
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">cne</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">{{ candidat.cne }}</p>
+                    </div>
+                  </div>
+
+                  <hr />
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">ville</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">{{ candidat.ville }}</p>
+                    </div>
+                  </div>
+                  <hr />
+                </div>
+                <div class="col-lg-6">
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <p class="mb-0">sexe</p>
+                    </div>
+                    <div class="col-sm-8">
+                      <p class="text-muted mb-0">{{ candidat.sexe }}</p>
+                    </div>
+                  </div>
+                  <hr />
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <p class="mb-0">Pays</p>
+                    </div>
+                    <div class="col-sm-8">
+                      <p class="text-muted mb-0">{{ candidat.pays }}</p>
+                    </div>
+                  </div>
+                  <hr />
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <p class="mb-0">Telephone</p>
+                    </div>
+                    <div class="col-sm-8">
+                      <p class="text-muted mb-0">{{ candidat.telCandidat }}</p>
+                    </div>
+                  </div>
+                  <hr />
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <p class="mb-0">Address</p>
+                    </div>
+                    <div class="col-sm-8">
+                      <p class="text-muted mb-0">{{ candidat.adresse }}</p>
+                    </div>
+                  </div>
+                  <hr />
+                  <!-- <div class="row">
+                                <div class="col-sm-5">
+                                    <p class="mb-0">fonctionnaire</p>
+                                </div>
+                                <div class="col-sm-5">
+                                    <p class="text-muted mb-0">{{candidat.fonctionnaire}}</p>
+                                </div>
+                            </div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card mb-4">
+            <div class="card-body">
+              <h3 class="mb-2">Diplome</h3>
+              <hr />
+              <div class="row" *ngFor="let d of candidat['diplomes']">
+                <div class="col-sm-3">
+                  <p class="mb-0">{{ d.intitule }}</p>
+                  <a
+                    class="btn btn-outline-info mt-2 me-2"
+                    type="button"
+                    *ngFor="let a of d.annexes"
+                    href="{{ a.pathFile }}"
+                    >Telecharger {{ a.typeAnnexe }}</a
+                  >
+                </div>
+                <div class="col-sm-9">
+                  <div class="text-muted mb-0">
+                    etablissement: "{{ d.etablissement }}"
+                  </div>
+                  <hr />
+                  <div class="text-muted mb-0">
+                    specialite: "{{ d.specialite }}"
+                  </div>
+                  <hr />
+                  <div class="text-muted mb-0">
+                    moyen generale: {{ d.moyen_generale }}
+                  </div>
+                  <hr />
+                  <div class="text-muted mb-4">mention: "{{ d.mention }}"</div>
+                </div>
+                <hr />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

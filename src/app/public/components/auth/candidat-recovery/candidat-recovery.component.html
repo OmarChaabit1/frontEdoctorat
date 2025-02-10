@@ -1,0 +1,101 @@
+<div class="container padding-bottom-3x mb-2 mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10">
+      <div class="forgot">
+        <h3 class="text-center text-primary fw-bold my-3">
+          <i class="bi bi-unlock"></i> Récupération de mot de passe
+        </h3>
+        <p class="my-3">
+          En suivant ces étapes , vous arriverez a récupérer votre mot de passe
+        </p>
+        <ul class="list-group">
+          <li class="list-group-item">
+            <span class="text-primary text-medium">1. </span> Entrer votre
+            adresse mail.
+          </li>
+          <li class="list-group-item">
+            <span class="text-primary text-medium">2. </span> étape 2 ....
+          </li>
+          <li class="list-group-item">
+            <span class="text-primary text-medium">3. </span>étape 3
+          </li>
+        </ul>
+      </div>
+
+      <form
+        *ngIf="requestSuccessful === undefined"
+        [formGroup]="form"
+        class="card mt-4"
+        (ngSubmit)="onSubmit()"
+      >
+        <div class="card-body">
+          <div class="form-group">
+            <label for="email-for-pass" class="text-primary fw-bold my-3"
+              >Votre adresse email</label
+            >
+            <input
+              id="email-for-pass"
+              class="form-control"
+              type="email"
+              formControlName="email"
+              name="email"
+              [readOnly]="requesting"
+            /><small class="form-text text-muted"
+              >Veuillez utiliser l'adresse email que vous avez utilisez pendant
+              l'inscription</small
+            >
+          </div>
+        </div>
+        <div
+          class="card-footer d-flex justify-content-between align-items-center"
+        >
+          <button class="btn btn-primary" routerLink="/home/candidat/login">
+            revenir vers se connecter
+          </button>
+          <button
+            *ngIf="!requesting"
+            class="btn btn-primary"
+            [disabled]="!form.valid"
+          >
+            confirmer
+          </button>
+          <h4 *ngIf="requesting">
+            <img
+              src="/assets/images/connexion/loading.webp"
+              width="300"
+              height="100"
+            />
+          </h4>
+        </div>
+      </form>
+
+      <div *ngIf="requestSuccessful" class="card mt-4">
+        <div class="card-body">
+          <h5 class="card-title text-primary">
+            Demande de réinitialisation du mot de passe effectuée avec succès
+          </h5>
+          <p>
+            Un e-mail a été envoyé à votre compte de messagerie. Cliquez sur le
+            lien dans l'e-mail pour procéder à la réinitialisation du mot de
+            passe. N'oubliez pas de vérifier vos spams si vous ne trouvez pas
+            l'e-mail dans votre boîte de réception.
+          </p>
+        </div>
+      </div>
+
+      <div *ngIf="requestSuccessful === false" class="card mt-4">
+        <div class="card-body">
+          <h5 class="card-title text-danger">
+            Erreur lors de la demande de réinitialisation du mot de passe
+          </h5>
+          <p>
+            Une erreur s'est produite lors de la demande de réinitialisation du
+            mot de passe. Assurez-vous que l'adresse e-mail fournie est associée
+            à un compte candidat. Si tout va bien de votre côté, veuillez
+            réessayer plus tard.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

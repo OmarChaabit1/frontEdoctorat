@@ -1,0 +1,83 @@
+<div *ngIf="!showEmailConfMsg">
+  <h5
+    *ngIf="showError"
+    class="col-sm-12 col-lg-5 text-light text-center bg-danger m-auto p-3"
+  >
+    {{ errorText }}
+  </h5>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="container-fluid mt-5">
+      <h3 class="text-center">S'inscrire</h3>
+
+      <div class="col-5 m-auto form-group mt-3">
+        <label class="form-label font-weight-bold fs-3" for="email"
+          ><i class="bi bi-envelope"></i> Email</label
+        >
+        <input
+          type="email"
+          name="email"
+          class="form-control"
+          formControlName="email"
+          id="email"
+          placeholder="Email"
+        />
+      </div>
+
+      <div class="col-5 m-auto form-group mt-3">
+        <label class="form-label font-weight-bold fs-3" for="nom"
+          ><i class="bi bi-person-lines-fill"></i> Nom</label
+        >
+        <input
+          type="text"
+          name="nom"
+          class="form-control"
+          formControlName="nom"
+          id="nom"
+          placeholder="Nom"
+        />
+      </div>
+
+      <div class="col-5 m-auto form-group mt-3">
+        <label class="form-label font-weight-bold fs-3" for="nom"
+          ><i class="bi bi-person-lines-fill"></i> Prenom</label
+        >
+        <input
+          type="text"
+          name="prenom"
+          class="form-control"
+          formControlName="prenom"
+          id="prenom"
+          placeholder="Prenom"
+        />
+      </div>
+
+      <div class="col-5 m-auto form-group mt-3">
+        <input
+          *ngIf="!showLoading"
+          type="submit"
+          class="btn btn-outline-primary"
+          value="S'inscrire"
+          [disabled]="!form.valid"
+        />
+
+        <h5 *ngIf="showLoading" class="text-primary">
+          <img
+            width="300"
+            height="100"
+            src="/assets/images/connexion/loading.webp"
+          />
+        </h5>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="col-5 m-auto" style="height: 73vh" *ngIf="showEmailConfMsg">
+  <h3 class="mb-3 text-success">confirmez votre email</h3>
+  <h6>
+    Pour procéder à votre inscription, un e-mail de confirmation a été envoyé à
+    votre adresse e-mail. Assurez-vous de vérifier votre dossier spam au cas où
+    vous ne le trouveriez pas dans votre boîte de réception. Le lien de
+    vérification est valide pendant 30 minutes. Vous pouvez fermer cette page.
+  </h6>
+</div>

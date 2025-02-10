@@ -1,0 +1,80 @@
+<div class="my-3">
+  <div class="loadingModal" *ngIf="showLoading">
+  
+    <div class="modalContent">
+      <h3 class="text-primary">Authentification en cours</h3>
+      <p>
+        Après vous être connecté avec Google, nous devons vérifier que vous êtes
+        un professeur. Veuillez patienter, vous serez bientôt redirigé si tout se
+        passe bien.
+      </p>
+    </div>
+  
+  </div>
+  <h5 *ngIf="showProfAuthError" class="col-sm-12 col-lg-5 text-light text-center bg-danger m-auto p-3 m-3">
+    Un professeur avec le compte Google choisi n'existe pas.
+  </h5>
+  
+  <div class="row m-3" >
+  
+    <div class="col-sm-12 col-lg-6 d-flex justify-content-center align-items-center">
+  
+    <div class="container col-12">
+     
+      <img src="/assets/images/ced/team4.JPG" class="img-fluid img-thumbnail" alt="">
+   
+      <div class="overlay"> <h3>{{'connexion.equipe'| translate}} <span style="font-size:7px;">{{'connexion.orientation'| translate}}</span></h3>
+      <ul class="list-group">
+       <li class="list-group-item fw-bold"><a href="https://www.linkedin.com/in/alaeddine-yaden-940405237/" blank="">{{'connexion.Alae_eddine'| translate}} </a> <span class="text-color"> ex-USMBA </span></li>
+       <li class="list-group-item fw-bold"><a href="https://www.linkedin.com/in/anouar-bakouch-7b4204155/" blank=""> {{'connexion.Anouar_bakouch'| translate}} </a> <span class="text-color">(ENSAM-R) ex-USMBA</span></li>
+       <li class="list-group-item fw-bold">{{'connexion.Abdelali_ibriz'| translate}}<span class="text-primary"> Directeur du Pôle  de digitalisation </span></li>
+       <li class="list-group-item fw-bold"><a href="https://www.linkedin.com/in/kelvin-clark-owusu-3b6778194/" blank="">{{'connexion.Kelvin_Owusu'| translate}} </a><span class="text-color">(ENSAM-R) ex-USMBA </span></li>
+       <li class="list-group-item fw-bold"><a href="https://www.linkedin.com/in/mohammed-akram-ibriz-85030322b/" blank=""> {{'connexion.Mohamed_Ibriz'| translate}}</a><span class="text-color">(UVSQ) ex-USMBA </span></li>
+      </ul>
+      </div>
+
+    </div>
+  
+    </div>
+    <div class="col-sm-12 col-lg-6 d-flex flex-column justify-content-center align-items-between">
+  
+      <div class="col m-3">
+        <button class="btn btn-outline-primary" routerLink="/home/candidat/login">
+          <i class="bi bi-file-person"></i>  {{'connexion.candidat' | translate}}
+        </button>
+      </div>
+  
+  
+      <div class="col m-3">
+        <button class="btn btn-outline-primary" type="button" routerLink="/home/scolarite/login">
+          <i class="bi bi-file-person"></i>  {{ 'connexion.scolarite'| translate}}
+        </button>
+      </div>
+  
+      <div class="col m-3">
+        <button class="btn btn-outline-primary" type="button" (click)="loginProf()">
+          <i class="bi bi-file-person"></i>  {{'connexion.professeur' | translate }}
+        </button>
+      </div>
+  
+      <div class="col m-3">
+        <button class="btn btn-outline-primary" type="button">
+          <i class="bi bi-file-person"></i>  {{ 'connexion.directeur_pole' | translate}}
+        </button>
+      </div>
+  
+      <div class="col m-3">
+        <button class="btn btn-outline-primary" type="button">
+          <i class="bi bi-file-person"></i> {{ 'connexion.directeur_ced' | translate}}
+        </button>
+      </div>
+  
+      <div class="col m-3">
+        <button class="btn btn-outline-primary" type="button" (click)="loginProf()">
+          <i class="bi bi-file-person"></i> {{ 'connexion.directeur_labo' | translate }}
+        </button>
+      </div>
+  
+    </div>
+  </div>
+  </div>

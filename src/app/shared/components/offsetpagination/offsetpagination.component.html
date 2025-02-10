@@ -1,0 +1,14 @@
+<div *ngIf="indexes.length > 0">
+  <ul class="pagination d-flex flex-wrap">
+    <li class="page-item" *ngFor="let i of indexes">
+      <a
+        [style.backgroundColor]="i == currentIndex ? 'blue' : '#fff'"
+        [style.color]="i == currentIndex ? '#fff' : 'blue'"
+        class="page-link"
+        href="javascript:void(0)"
+        (click)="onClick(i - 1)"
+        >{{ i }}</a
+      >
+    </li>
+  </ul>
+</div>

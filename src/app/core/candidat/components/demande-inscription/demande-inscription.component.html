@@ -1,0 +1,235 @@
+<div class="my-3">
+    <button class="btn btn-primary" routerLink="/candidat/notifications" type="button">< retour</button>
+</div>
+
+
+<div class="col-md-4 text-right">
+    <button class="btn btn-success btn-block" (click)="openPDF()">Download PDF</button>
+</div>
+
+ <div id="htmlData">
+    <div class="second_div">
+        <div class="inside_second">
+            <h3>DEMANDE D’INSCRIPTION EN 1ERE ANNEE DE DOCTORAT Année Universitaire : $:year1/$:year2</h3>
+            <h4>Centre d’Etudes Doctorales en $:inscription_info.ced</h4>
+        </div>
+    
+    </div>
+    <main>
+        <div class="main_div">
+            <div class="gray_div">
+                <h4>Identité</h4>
+            </div>
+    
+            <div>
+                <h5>Nom: <span>$:inscription_info.candidat.nomCandidat</span></h5>
+                <h5>Prenom: <span>$:inscription_info.candidat.prenomCandidat</span></h5>
+                <div class="two_columns">
+                    <h5>Date de naissance: <span>&nbsp;$:inscription_info.candidat.dateDeNaissance</span></h5>
+                    <h5>Lieu de naissance: <span>&nbsp;$:inscription_info.candidat.villeDeNaissance</span></h5>
+                </div>
+                <div class="two_columns">
+                    <h5>Province: <span>$:inscription_info.candidat.ville</span></h5>
+                    <h5>Nationalite : <span>$:inscription_info.candidat.nom_pays</span></h5>
+                </div>
+                <div class="two_columns">
+                    <h5>Numéro de la CIN : <span>$:inscription_info.candidat.cin</span></h5>
+                    <h5>Code National de l’Etudiant (CNE) : <span>$:inscription_info.candidat.cne</span></h5>
+                </div>
+                <h5>Adresse :<span>$:inscription_info.candidat.adresse</span></h5>
+            </div>
+        </div>
+    
+        <div class="main_div">
+            <div class="gray_div">
+                <h4>
+                    Diplôme obtenu : $:inscription_info.titre_diplome
+                </h4>
+            </div>
+            <div>
+                <div class="two_columns">
+                    <h5>Dernier diplôme obtenu : <span>$:inscription_info.titre_diplome</span></h5>
+                    <h5>Spécialité : <span>$:inscription_info.specialite</span></h5>
+                </div>
+                <div class="two_columns">
+                    <h5>Année d'obtention : <span>$:inscription_info.annee_obtention</span></h5>
+                    <h5>Mention :<span>$:inscription_info.mention</span></h5>
+                </div>
+            </div>
+        </div>
+    
+        <div class="main_div" id="dash">
+            <div class="gray_div">
+                <h4>Thèse preparée :
+                </h4>
+            </div>
+            <div>
+                <h5>Structure de recherche d’accueil:</h5>
+                <h5 class="toright">Laboratoire/ Equipe :<span>$:inscription_info.lab</span></h5>
+                <h5>Etablissement:<span>$:inscription_info.etablissement</span></h5>
+                <h5>Formation doctorale :<span>$:inscription_info.formation_doctorale</span></h5>
+                <h5>Directeur principal de la thèse :</h5>
+                <h5 class="toright">Nom et prénom :<span>$:inscription_info.directeur</span></h5>
+                <div class="two_columns">
+                    <h5>Tél : <span>$:inscription_info.tel_directeur</span></h5>
+                    <h5>E-mail : :<span>$:inscription_info.email_directeur</span></h5>
+                </div>
+            </div>
+            <h5>Co-directeur de thèse:</h5>
+            <h5 class="toright">Nom et prénom :<span>$:inscription_info.codirecteur</span></h5>
+            <div class="two_columns">
+                <h5>Tél : <span>$:inscription_info.tel_codirecteur</span></h5>
+                <h5>E-mail : :<span>$:inscription_info.email_codirecteur</span></h5>
+            </div>
+            <h5>Intitulé de la thèse :</h5>
+            <h5>$:inscription_info.intitule_these</h5>
+        </div>
+    </main>
+    <div id="date_text">
+        <h5>Fès le<span>$:inscription_info.date_today</span></h5>
+    </div>
+    <section id="date_text_1">
+        <div class="div_equal">
+            <h5>Directeur principal de la thèse</h5>
+        </div>
+    
+        <div class="div_equal_1">
+            <div>
+                <h5>Signatures</h5>
+                <h5>Responsable de la structure d’accueil </h5>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="div_equal_1">
+                <h5>Chef de l’Etablissement de domiciliation
+                    de la formation doctorale
+                </h5>
+            </div>
+        </div>
+        <div class="div_equal">
+            <h5>Directeur du Centre d'études doctorales</h5>
+        </div>
+    </section>
+    <DIV STYLE="page-break-before:always"></DIV> 
+    <div dir="rtl" class="ar">
+    
+    <!-- <header>
+        <img src="/static/assets/images/identite.png" width="500" height="83" alt="">
+        <div tal:switch="inscription_info.candidat.pathPhoto is None">
+            <img tal:case="False" src="" width="100" height="100"
+                 alt="path photo pour son photo de profil">
+            <img tal:case="True" src="/static/candidat/imgs/user.png" width="100" height="100"
+                 alt="path photo pour son photo de profil">
+        </div>
+    </header> -->
+        <div class="second_div">
+            <div class="inside_second">
+                <h3>بطاقة التسجيل بالدكتوراه
+                  
+                </h3>
+                <h4> مركز دراسات الدكتوراه: </h4>
+            </div>
+    
+        </div>
+        <main>
+            <div class="main_div">
+                <div class="gray_div">هوية الطالب الباحث :</div>
+    
+                <div>
+                    <h5>الاسم العائلي:: <span></span></h5>
+                    <h5>الاسم الشخصي:: <span></span></h5>
+                    <div class="two_columns">
+                        <h5>تاريخ الازدياد: : <span></span></h5>
+                        <h5>مكان الازدياد: : <span></span></h5>
+                    </div>
+                    <div class="two_columns">
+                        <h5>البلد: <span>$:inscription_info.candidat.ville</span></h5>
+                        <h5>الجنسية: <span>$:inscription_info.candidat.nom_pays</span></h5>
+                    </div>
+                    <div class="two_columns">
+                        <h5>ر.و.ط: <span></span></h5>
+                        <h5>ر.ب.ت.و: <span></span></h5>
+                    </div>
+                    <h5>العنوان: :<span></span></h5>
+                </div>
+            </div>
+    
+            <div class="main_div">
+                <div class="gray_div">الشھادة المحصل علیھا:</div>
+                <div>
+                    <div class="two_columns">
+                        <h5>آخر شھادة : <span></span></h5>
+                        <h5>تخصص:<span></span></h5>
+                    </div>
+                    <div class="two_columns">
+                        <h5>سنة الحصول على الشھادة: <span></span></h5>
+                        <h5>المیزة:<span></span></h5>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="main_div" id="dash">
+                <div class="gray_div">معلومات تھم الأطروحة:</div>
+                <div>
+                    <h5>بنیة البحث:<span></span></h5>
+    
+                    <h5>المؤسسة:<span></span></h5>
+                    <h5>تكوین الدكتوراه :<span></span></h5>
+    
+                    <h5>الأستاذ المشرف الأول :<span></span></h5>
+    
+                    <div class="two_columns">
+                        <h5>الھاتف: <span></span></h5>
+                        <h5>البرید الالكتروني :<span></span></h5>
+                    </div>
+                </div>
+                <h5>الأستاذ المشرف الثاني:<span></span></h5>
+    
+                <div class="two_columns">
+                    <h5>الھاتف: <span></span></h5>
+                    <h5>البرید الالكتروني :<span></span></h5>
+                </div>
+                <h5>عنوان الأطروحة: :</h5>
+                <h5></h5>
+            </div>
+    
+        </main>
+        <div id="date_text">
+            <h5>فاس في:<span></span></h5>
+        </div>
+        <section id="date_text_1">
+            <div class="div_equal">
+                <h5>المشرف الأول على الأطروحة</h5>
+            </div>
+    
+            <div class="div_equal_1">
+    
+                <h5>المسؤول عن بنیة البحث</h5>
+                <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+                <div>
+                    <h5>رئیس المؤسسة المحتضنة للتكوین
+                    </h5>
+                </div>
+            </div>
+    
+            <div class="div_equal">
+                <h5>مدیر مركز الدراسات بالدكتوراه</h5>
+            </div>
+        </section>
+    </div>
+</div>
+ 
+     

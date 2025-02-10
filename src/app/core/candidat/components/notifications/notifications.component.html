@@ -1,0 +1,80 @@
+<app-alert *ngIf="alert" [data]="alert"></app-alert>
+<app-alert *ngIf="loading" [data]="alert"></app-alert>
+
+
+    <h3 class="text-primary mt-3 border border-bottom border-primary text-center p-3">{{'candidat.notifications' | translate }}</h3>
+
+   <div *ngIf="isFetchingItems">
+    <h4>
+      <img
+        src="/assets/images/connexion/loading.webp"
+        width="300"
+        height="100"
+      />
+    </h4>
+  </div>
+  <div  *ngIf="!isFetchingItems" >
+    <ul class="list-group mt-3" *ngFor="let n of notifications">
+      <p class="h5">{{'candidat.notifications_details.conseil_1' | translate }}</p>
+        <li class="list-group-item"><span class="text-primary fw-bold">date de commission : </span>{{n?.commission?.dateCommission}}</li>
+        <li class="list-group-item"><span class="text-primary fw-bold">sujet : </span> {{n?.sujet?.titre}}</li>
+        <li class="list-group-item"><span class="text-primary fw-bold">heure : </span>{{n?.commission?.heure}}</li>
+        <li class="list-group-item"><span class="text-primary fw-bold">lieu de commission : </span> {{n?.commission?.lieu}}</li>
+    </ul>
+</div>
+
+<h3 class="text-primary mt-3 border border-bottom border-primary text-center p-3">Résultats</h3>
+
+<div  *ngIf="!isFetchingItems" >
+  <p class="h5">veuillez choisir un sujet parmi ces sujet(s)</p>
+  <ul class="list-group mt-3" *ngFor="let x of resultats">
+      <li class="list-group-item"><div class="row">
+        <div class="col col-6"><span class="text-primary fw-bold text-center">Sujet : </span> {{x.sujet?.titre}} 
+          </div>
+          <div class="col col-6 d-flex flex-wrap justify-content-between align-items-center">
+            <button class="col-3 btn btn-primary my-1" type="button" [disabled]="!authorized" (click)="choseSubject(x,mymodal)"><i class="bi bi-check-circle"></i> confirmer</button>
+          <div class="col-5"> 
+            <button  routerLink="/candidat/demande_inscription" class="row btn btn-primary my-1 text-wrap" *ngIf="x['selected']" type="button"><i class="bi bi-check-circle"></i>imprimer demande d'inscription</button>
+             <button  (click)="open(mymodal)" class="row btn btn-primary my-1 text-wrap" *ngIf="x['selected']" type="button"><i class="bi bi-check-circle"></i>constitution du dossier</button>
+            </div>
+          </div>
+        </div>
+      </li>
+      
+    </ul>
+</div>
+
+<!--modal-->
+<ng-template
+  class="modal fade"
+  tabindex="-1"
+  role="dialog"
+  #mymodal
+  let-modal
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered w-100" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">constitution du dossier</h5>
+      </div>
+      <div class="modal-body">
+        
+        <div >
+        
+          <ul class="list-group mb-3">
+      <li class="list-group-item"> <a href="https://edoctorat.usmba.ac.ma/static/piecesfournir.pdf" target="_blank">{{'candidat.notifications_details.piece_fournir' | translate }}</a></li>
+          <li class="list-group-item"><a href="https://edoctorat.usmba.ac.ma/static/iltizam.pdf" target="_blank">Télécharger la  déclaration sur l'honneur à légaliser/تحميل التصريح بالشرف </a></li>
+          <li class="list-group-item"> <a href="https://edoctorat.usmba.ac.ma/static/recu.pdf" target="_blank">Reçu / وصل</a></li>
+          <li class="list-group-item"> <a href="https://edoctorat.usmba.ac.ma/static/demandebourse.pdf" target="_blank"> Demande de bourse / طلب منحة</a></li>
+          <li class="list-group-item"> <a href="https://edoctorat.usmba.ac.ma/static/charte.pdf" target="_blank"> Charte de thèse /  ميثاق الاطروحة</a></li>
+      </ul>
+      </div>
+          </div>
+         
+      </div>
+    </div>
+</ng-template>
+
+
+

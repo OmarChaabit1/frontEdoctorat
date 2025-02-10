@@ -1,0 +1,58 @@
+<h5
+  *ngIf="showError"
+  class="col-sm-12 col-lg-5 text-light text-center bg-danger m-auto p-3"
+>
+  {{ errorText }}
+</h5>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="container-fluid">
+    <div class="col-sm-12 col-lg-5 m-auto form-group mt-3">
+      <label class="form-label font-weight-bold fs-3" for="username"
+        ><i class="bi bi-envelope"></i>
+        {{ "auth.login.nom_utilisateur" | translate }}</label
+      >
+      <input
+        class="form-control"
+        id="username"
+        type="username"
+        formControlName="username"
+        name="username"
+        placeholder=" {{ 'auth.login.nom_utilisateur' | translate }}"
+      />
+    </div>
+
+    <div class="col-sm-12 col-lg-5 m-auto form-group mt-3">
+      <label class="form-label font-weight-bold fs-3" for="password"
+        ><i class="bi bi-key"></i>
+        {{ "auth.login.mot_de_passe" | translate }}</label
+      >
+
+      <input
+        class="form-control mb-3"
+        id="password"
+        type="password"
+        formControlName="password"
+        name="password"
+        placeholder=" {{ 'auth.login.mot_de_passe' | translate }}"
+      />
+      <input
+        class="btn btn-outline-primary"
+        *ngIf="!showLoading"
+        type="submit"
+        [disabled]="!form.valid"
+        value="{{ 'auth.login.login' | translate }}"
+      />
+    </div>
+
+    <div class="col-sm-12 col-lg-5 m-auto form-group mt-3">
+      <h4 *ngIf="showLoading">
+        <img
+          src="/assets/images/connexion/loading.webp"
+          width="300"
+          height="100"
+        />
+      </h4>
+    </div>
+  </div>
+</form>

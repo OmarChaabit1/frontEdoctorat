@@ -1,0 +1,211 @@
+<app-alert [data]="alert"></app-alert>
+<div class="container-fluid mt-3">
+  <h3 class="text-primary mt-3 border border-primary text-center p-3 my-3"> cliquer deux fois sur la ligne pour valider ou invalider le candidat</h3>
+  <div class="table-responsive">
+    <table class="table table-align-middle table-striped table-hover">
+      <thead>
+        <tr class="table-primary">
+          <th
+            scope="col"
+            class="w-7"
+          >
+            CNE
+          </th>
+          <th scope="col" class="w-15">Nom</th>
+          <th scope="col" class="w-15">Prenom</th>
+          <th scope="col" class="w-7">Titre Sujet</th>
+          <th scope="col" class="w-23">Formation Doctorale</th>
+          <th scope="col" class="w-23">CED</th>
+          <th scope="col" class="w-23">Labo</th>
+          <th scope="col" class="w-23">Datre depos dossier</th>
+          <th scope="col" class="w-23">Remarque</th>
+          <th scope="col" class="w-23">Valider</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of candidats" (dblclick)="fun(mymodal1, c)">
+          <td>{{ c.candidat.cne }}</td>
+          <td>{{ c.candidat.nom }}</td>
+          <td>{{ c.candidat.prenom }}</td>
+          <td>{{ c.sujet.titre }}</td>
+          <td>{{ c.sujet["formationDoctorale"] }}</td>
+          <td>{{ c.sujet["ced"] }}</td>
+          <td>{{ c.sujet["laboratoire"] }}</td>
+          <td>{{ c["dateDiposeDossier"] }}</td>
+          <td>{{ c["remarque"] }}</td>
+          <td [class]='c["valider"] ? "text-success" : "text-danger"'>
+            {{ c["valider"] ? "valide" : "non valide" }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <app-offsetpagination
+    [itemsCount]="itemsCount"
+    [itemsPerPage]="50"
+    (indexChange)="onIndexChange($event)"
+    *ngIf="candidats.length > 0"
+  ></app-offsetpagination>
+</div>
+
+<ng-template
+  class="modal fade"
+  tabindex="-1"
+  role="dialog"
+  #mymodal1
+  let-modal
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal-dialog-centered w-100 modal-xl"
+    role="document"
+  >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">valide dossier</h5>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          
+
+          <section class="bg-white container-fluid">
+            <div class="container py-5">
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="card mb-4">
+                    <div class="card-body" class="bg-light"></div>
+                    <div class="card-body text-center img">
+                      <img
+                        [src]="
+                          candidat.candidat['photo']
+                            ? str + candidat.candidat['photo']
+                            : '/assets/images/unknown_pic.jpg'
+                        "
+                        alt="image candidat"
+                        alt="avatar"
+                        class="img-fluid"
+                      />
+                      <h5 class="my-3">
+                        {{ candidat.candidat.prenom }}
+                        {{ candidat.candidat.nom }}
+                      </h5>
+                      <p class="mb-3">{{ candidat.candidat.cne }}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-8">
+                  <div class="card mb-4">
+                    <div class="card-body">
+                      <h3 class="mb-2">Information</h3>
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <p class="mb-0">Titre Sujet</p>
+                            </div>
+                            <div class="col-sm-9">
+                              <p class="text-muted mb-0">
+                                {{ candidat.sujet.titre }}
+                              </p>
+                            </div>
+                          </div>
+                          <hr />
+                          <div class="row">
+                            <div class="col-sm-4">
+                              <p class="mb-0">Formation Doctorale</p>
+                            </div>
+                            <div class="col-sm-8">
+                              <p class="text-muted mb-0">
+                                {{ candidat.sujet["formationDoctorale"] }}
+                              </p>
+                            </div>
+                          </div>
+                          <hr />
+                          <div class="row">
+                            <div class="col-sm-4">
+                              <p class="mb-0">ced</p>
+                            </div>
+                            <div class="col-sm-8">
+                              <p class="text-muted mb-0">
+                                {{ candidat.sujet["ced"] }}
+                              </p>
+                            </div>
+                          </div>
+                          <hr />
+                          <div class="row">
+                            <div class="col-sm-4">
+                              <p class="mb-0">laboratoire</p>
+                            </div>
+                            <div class="col-sm-8">
+                              <p class="text-muted mb-0">
+                                {{ candidat.sujet["laboratoire"] }}
+                              </p>
+                            </div>
+                          </div>
+                          <hr />
+                          <div class="row">
+                            <div class="col-sm-4">
+                              <p class="mb-0">Datre depos dossier</p>
+                            </div>
+                            <div class="col-sm-8">
+                              <p class="text-muted mb-0">
+                                {{ candidat["dateDiposeDossier"] }}
+                              </p>
+                            </div>
+                          </div>
+                          <hr />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <form [formGroup]="form" (ngSubmit)="onClickUpdate()">
+          <div class="form-group mb-3">
+            <label for="my-textarea" class="mb-3">Remarque</label>
+            <input
+              maxlength="100"
+              placeholder="dossier complet ou incomplet ...."
+              id="my-textarea"
+              class="form-control"
+              name=""
+              rows="2"
+              formControlName="remarque"
+            >
+          </div>
+          <div class="modal-footer">
+            <button
+              class="btn btn-secondary"
+              data-dismiss="modal"
+              (click)="modal.dismiss('Cross click')"
+              type="button"
+            >
+              annuler
+            </button>
+            <button
+              class="btn btn-danger btn-confirmer"
+              type="button"
+              (click)="[modal.close('Save click'),invalider()]"
+               [disabled]="form.invalid"
+            >
+              invalider
+            </button>
+            <button
+              class="btn btn-primary btn-confirmer"
+              type="submit"
+              (click)="modal.close('Save click')"
+              [disabled]="form.invalid"
+            >
+              valider
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</ng-template>

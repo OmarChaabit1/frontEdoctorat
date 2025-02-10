@@ -1,0 +1,4 @@
+<h6 [class.position-sticky]="expand" [style.top]="0" class="bg-white"><span (click)="onExpandToggle()" class="btn btn-primary">{{expand ? "-" : "+"}}</span><span class="ms-2">{{profNom}}</span></h6>
+<div *ngIf="expand" class="mx-3">
+    <p *ngFor="let s of sujets" [class.d-none]="selectedSujetsIds.indexOf(s.id) > -1" [style]="{cursor: 'pointer'}" (click)="onSujetClick(s)">{{s.titre}}</p>
+</div>

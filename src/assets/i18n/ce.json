@@ -1,0 +1,188 @@
+{
+    "home": {
+      "Pole_doctorat": "博士点",
+      "pole_doctrales": {
+        "description": "描述",
+        "ced": "博士研究中心"
+      },
+      "laboratoire_recherche": "研究实验室",
+      "formation_doctorale": "博士研究",
+      "Reglement_candidature": "规则和应用",
+      "reg_candidature": {
+        "Charte_de_doctorat": "博士章程",
+        "Comment candidater": "如何申请？",
+        "Candidater": "申请",
+        "guide": "指导"
+      },
+      "connecter": "登录",
+      "footer": {
+        "email_footer": "通过输入您的电子邮件，您将收到新闻",
+        "abonnement": "关注",
+        "description": "Sidi Mohamed Ben Abdellah University of Fez 渴望成为摩洛哥排名前三的多学科大学和非洲最大的二十所大学之一，因其对卓越的承诺而受到认可，通过其以学生为中心的教育质量和世界一流的科技研究。",
+        "doctorat": "博士学位",
+        "prof": "教授",
+        "plus": "更多",
+        "a_propos": "关于",
+        "faq": "常见问题",
+        "contact": "联系方式",
+        "formation": "培训",
+        "mobilite": "关注0",
+        "Pole_recherche": "关注1",
+        "proc": "关注2",
+        "Appel": "关注3",
+        "cite": "关注4",
+        "president": "关注5",
+        "cooperation": "关注6"
+      },
+      "description": {
+        "description": "欢迎来到博士周期申请管理平台，这是丰富菲斯大学Sidi Mohamed Ben Abdellah大学数字化工作环境的新软件砖。它也是博士周期管理申请的官方平台作为USMBA博士生从注册到答辩路径的跟进和管理。",
+        "pole_digitalisation": "数字化极点",
+        "USMBA": "Sidi Mohamed Ben Abdellah Fès大学"
+      },
+      "welcome": {
+        "doctorat": "E-doctorate - USMBA",
+        "candidater": "申请者",
+        "connecter": "Connect",
+        "cycle": "博士周期 - USMBA",
+        "candidat": "候选人",
+        "projet": "已完成项目",
+        "formation": "博士培训"
+      },
+      "conseils": {
+        "conseils": "Tips",
+        "titre1": "自信",
+        "text1": "成千上萬的人還沒讀完博士雖然有些艱鉅，但要對完成論文的能力充滿信心",
+        "titre2": "避免太流行的話題",
+        "text2": "因為一篇論文需要幾年時間，選擇一個永遠有趣的話題。學者不是記者。他們的工作必須長期保持相關性。",
+        "titre3": "尋求幫助",
+        "text3": "尋找機會從您的同事或研究人員那裡獲得幫助以完成您的研究。如果你遇到困難，不要隱藏它。和你的研究主管談談。尋求幫助並不羞恥。只有保持沉默，問題才會變得更大。",
+        "titre4": "理解你答辯的目的",
+        "text4": "考官會想知道你是否做過自己的研究，如果你寫過論文，如果你理解得很好，如果你已經很好地處理了你的研究問題，以及它們是否制定得很好。",
+        "titre5": "了解你的聽眾",
+        "text5": "自信0",
+        "titre6": "自信1",
+        "text6": "自信2"
+      },
+      "calendrier": {
+        "calendrier": "日曆",
+        "calendrier-prof": "教授日曆",
+        "calendrier-doctorant": "博士和候選人日曆"
+      }
+    },
+    "connexion": {
+      "candidat": "候選人",
+      "professeur": "教授",
+      "directeur_ced": "博士研究中心主任",
+      "directeur_pole": "極點主任",
+      "directeur_labo": "實驗室主任",
+      "scolarite": "Solarite",
+      "equipe": "數字團隊",
+      "orientation": "從左到右",
+      "Abdelali_ibriz": "Pr. Abdelali Ibriz",
+      "Anouar_bakouch": "Anouar Bakouch",
+      "Alae_eddine": "教授0",
+      "Mohamed_Ibriz": "教授1",
+      "Kelvin_Owusu": "教授2"
+    },
+    "auth": {
+      "login": {
+        "email": "Email",
+        "nom_utilisateur": "Nom d'utilisateur",
+        "mot_de_passe": "Mot de passe",
+        "pas_de_compte": "Vous n'avez pas un compte ?",
+        "inscription": "Inscrivez-vous ici",
+        "login": "se connecter"
+      }
+    },
+    "candidat": {
+      "deconnexion": "déconnexion",
+      "informations_personnels": "Informations Personnelles",
+      "info_perso": {
+        "photo_courant": "photo courant",
+        "importer_photo_profil": "Importer votre Photo du Profil",
+        "Nom": "Nom",
+        "Prenom": "Prénom",
+        "CIN": "CIN | Code d'identité National ",
+        "CNE": "CNE | Code National d'étudiant",
+        "Prenom_ar": "Prénom en arabe",
+        "Nom_ar": "Nom en arabe",
+        "date_naissance": "Date de naissance",
+        "lieu_naissance": "Lieu de naissance en Francais",
+        "lieu_naissance_ar": "Lieu de naissance en Arabe",
+        "adresse_residence": "Adresse de résidence",
+        "ville_naissance": "Ville de naissance en francais",
+        "ville_naissance_ar": "Ville de naissance en arabe",
+        "sexe": "Sexe",
+        "fonctionnaire": "Fonctionnaire",
+        "telephone": "Téléphone",
+        "Pays": "Pays",
+        "confirmer": "Confirmer",
+        "masculine": "Masculin",
+        "feminine": "Féminin"
+      },
+      "parcours": {
+        "BAC": "BACCALAUREAT",
+        "DUT": "Diplome Universitaire de Technologie",
+        "DEUG": "Diplome Universitaire Général",
+        "DEUST": "Diplome Universitaire Scientifiques et Techniques",
+        "BTS": "Brevet Technicien Supérieur ",
+        "LICENCE_PROFESSIONNELLE": "Licence Professionnelle",
+        "MASTER": "Master Fondamentale",
+        "MASTER_SPECIALISE": "Master Spécialisé",
+        "description-master-pro": "la disposition du diplome Master Spécialisé est non obligatoire pour passer au autres diplomes",
+        "DTS": "Diplome de Technicien Spécialisé",
+        "CI": "Diplome d'Ingénieur",
+        "LICENCE": "Licence",
+        "MASTER_EN_SCIENCE_TECHNIQUE": "Master en Science et Technique",
+        "DOCTORATE_EN_MEDICINE": "Doctorat en Médicine",
+        "description-master-st": "la disposition du Master sciences et techniques est non obligatoire pour passer au autres diplomes",
+        "description-medecine": "la disposition du doctorat en medecine est non obligatoire pour passer au autres diplomes",
+        "description-licence": "la disposition du diplome Licence est non obligatoire pour passer au autres diplomes",
+        "description-dts": "la disposition du Dts est non obligatoire pour passer au autres diplomes",
+        "description-bts": "la disposition du bts est non obligatoire pour passer au autres diplomes",
+        "description-deust": "la disposition du Deust est non obligatoire pour passer au autres diplomes",
+        "description-deug": "la disposition du Deug est non obligatoire pour passer au autres diplomes",
+        "decription-dut": "ne remplissez ce formulaire si vous seulement disposez dut sinon veuillez l'ignorer",
+        "decription-bac": "la disposition du diplome bac est obligatoire pour passer au autres diplomes",
+        "parcours": "Parcours",
+        "intitulé": "Intitulé",
+        "type": "Type",
+        "spécialité": "Spécialité",
+        "date": "date d'obtention",
+        "ville": "Ville",
+        "pays": "Pays",
+        "province": "Province",
+        "mention": "Mention",
+        "université": "Université",
+        "etablissement": "Etablissement",
+        "moyenne": "Moyenne génerale",
+        "diplome": "Diplôme",
+        "releves": "Relevés de notes",
+        "fichier_courant": "Fichier Courant",
+        "choix_fichier": "Choisir un fichier"
+      },
+      "parcours_": {
+        "professeur": "Professeur",
+        "sujet": "Sujet",
+        "action": "Action",
+        "laboratoire": "Laboratoire",
+        "ced": "ced",
+        "formation doctorale": "formation doctorale"
+      },
+      "postuler": "Postuler",
+      "postuler_details": {
+        "conseil_1": "Rechercher l'axe de recherche ou le titre du sujet",
+        "conseil_2": "En bas de la page cliquer sur postuler pour confirmer votre choix / POSTULER",
+        "conseil_3": "En bas de la page va apparaitre votre choix. Attention,certains axes de recherches ou sujets demandent de charger votre projet de recherche correspondant. Si c'est le cas charger votre projet de recherche en format pdf/"
+      },
+      "notifications": "Notifications",
+      "notifications_details": {
+        "conseil_1": "Nous vous invitons à participer à l'entretien de notre commission qui se tiendra le",
+        "liste_principale": "Liste principale",
+        "liste_d'attente": "Liste d'attente (dêpot de dossier de 14h à 16h au CED Dhar Mahraz)",
+        "aide_infos": "Aide et compléments d'information",
+        "conseil_2": "Cliquer sur Résultats pour voir les sujets dans lesquels vous êtes accepté en liste principale. Dans le cas où vous recevez une notification de résultats portant le sujet et la mention (Liste Principale ), imprimer la demande d'inscription correspondante à votre choix pour inscription et compléter votre dossier par les pièces définies dans document à fournir ci-dessous.",
+        "piece_fournir": "pièces a fournir"
+      }
+    }
+  }

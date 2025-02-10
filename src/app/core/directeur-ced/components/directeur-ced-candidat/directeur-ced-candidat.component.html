@@ -1,0 +1,45 @@
+
+
+<app-alert *ngIf="alert" [data]="alert"></app-alert>
+<app-alert *ngIf="loading" [data]="alert"></app-alert>
+
+<div class="container-fluid mt-3">
+
+  <div class="table-responsive">
+    <table class="table table-align-middle">
+      <thead>
+        <tr class="table-primary">
+          <th scope="col" class="w-7">Cne</th>
+          <th scope="col" class="w-15">Candidat</th>
+          <th scope="col" class="w-13">Sujet</th>
+          <th scope="col" class="w-13">Directeur</th>
+          <th scope="col" class="w-13">co-directeur</th>
+          <th scope="col" class="w-43">Formation Doctorale</th>
+          <th scope="col" class="w-43">laboratoire</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of candidats">
+          <td>{{ c.candidat.cne }}</td>
+          <td>{{ c.candidat.nom }} {{ c.candidat.prenom }}</td>
+          <td>{{ c.sujet.titre }}</td>
+          <td>{{ c.sujet.professeur.nom }} {{ c.sujet.professeur.prenom }}</td>
+          <td>{{ c.sujet["coDirecteur"] ? c.sujet["coDirecteur"] : "" }}</td>
+          <td>
+            {{
+              c.sujet["formationDoctorale"] ? c.sujet["formationDoctorale"] : ""
+            }}
+          </td>
+          <td>{{ c.sujet["laboratoire"] ? c.sujet["laboratoire"] : "" }} </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <app-offsetpagination
+    [itemsCount]="itemsCount"
+    [itemsPerPage]="50"
+    (indexChange)="onIndexChange($event)"
+    *ngIf="candidats.length > 0"
+  ></app-offsetpagination>
+</div>

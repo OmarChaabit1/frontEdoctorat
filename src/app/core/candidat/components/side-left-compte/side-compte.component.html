@@ -1,0 +1,39 @@
+
+        <div class="card w-100">
+            <div class="card-header">
+          
+            <img class="img-fluid " [src]="  candidatInfo?.pathPhoto  ? candidatInfo?.pathPhoto : '/assets/images/unknown_pic.jpg' " alt="image candidat">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title text-center">{{candidatInfo?.prenom}} {{candidatInfo?.nom }} </h5>
+              <p class="card-text text-center text-primary">{{candidatInfo?.email}}</p>
+
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                  <a routerLink="/candidat/info_personnels" routerLinkActive="_active" class="nav-link btn btn-primary text-light">
+                    <i class="bi bi-person-workspace"></i> {{ 'candidat.informations_personnels' | translate}}
+                  </a>
+              </li>
+              <li class="list-group-item">
+                <a routerLink="/candidat/parcours" routerLinkActive="_active" class="nav-link btn btn-primary text-light">
+                  <i class="bi bi-person-rolodex"></i>  {{ 'candidat.parcours.parcours' | translate}}
+                    
+                </a>
+              </li>
+              <li class="list-group-item"> <!---[class.disabled]="disablePostuler" --->
+                <a routerLink="/candidat/postuler" routerLinkActive="_active" class="nav-link btn btn-primary text-light">
+                  <i class="bi bi-bar-chart-steps"></i> {{ 'candidat.postuler' | translate}}
+                </a>
+              </li>
+              <li class="list-group-item">
+                <a routerLink="/candidat/notifications" routerLinkActive="_active" class="nav-link btn btn-primary text-light">
+                  <i class="bi bi-bell"></i> {{ 'candidat.notifications' | translate}} <span *ngIf="nbrNotifications > 0" class="bg-danger text-light p-1 rounded"> {{nbrNotifications}} </span>
+                </a>
+              </li>
+              
+            </ul>
+           
+    </div>
+
+

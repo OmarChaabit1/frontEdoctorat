@@ -1,0 +1,16 @@
+li {
+    font-size: 13px;
+}
+
+li:hover {
+
+   border: 1px dashed rgb(0, 119, 255);
+   
+}
+
+.text-color {
+    color: #003556 !important;
+}
+
+
+

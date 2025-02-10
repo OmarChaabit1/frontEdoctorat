@@ -1,0 +1,44 @@
+
+.div1{
+ 
+    position: sticky;
+    top: 0;
+}
+.div2{
+    
+    position: relative;
+    top: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+img {
+    filter: blur(6px);
+    -webkit-filter: blur(6px);
+    box-shadow: 50px;
+}
+.btn {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+    transition: .5s;
+}
+
+.btn-primary,
+.btn-secondary {
+    color: #FFFFFF;
+    box-shadow: inset 0 0 0 50px transparent;
+}
+
+.btn-primary:hover {
+    box-shadow: inset 0 0 0 0 var(--primary);
+}
+
+.btn-secondary:hover {
+    box-shadow: inset 0 0 0 0 var(--secondary);
+}
+
+.text-color {
+    color:#003556
+}
+
+

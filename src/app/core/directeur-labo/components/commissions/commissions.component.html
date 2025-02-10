@@ -1,0 +1,448 @@
+<app-alert *ngIf="alert" [data]="alert"></app-alert>
+<app-alert *ngIf="loading" [data]="alert"></app-alert>
+
+<div class="container-fluid mt-3">
+  <div class="row mb-3">
+    <div class="col-6 m-start">
+      <button
+        class="btn btn-primary btn-sm"
+        type="button"
+        (click)="open(mymodal)"
+      >
+        <i class="bi bi-plus-square-dotted"></i>
+        ajouter une commission
+      </button>
+    </div>
+    <div class="col-6 m-start">
+      <p class="text-danger">Si le sujet choisi n'a pas apparu dans la commission donc aucun candidat a postulé à ce sujet</p>
+    </div>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-align-middle">
+      <thead>
+        <tr class="table-primary">
+          <th scope="col" class="w-7">Date</th>
+          <th scope="col" class="w-23">Lieu</th>
+          <th scope="col" class="w-7">Heure</th>
+          <th scope="col" class="w-23">Membres</th>
+          <th scope="col" class="w-23">Sujets</th>
+          <th scope="col" class="w-23">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of commissions">
+          <td>{{ c.dateCommission }}</td>
+          <td>{{ c.heure }}</td>
+          <td>{{ c.lieu }}</td>
+          <td>
+            <ul>
+              <li *ngFor="let p of c.participants">
+                {{ p.nom }} {{ p.prenom }}
+              </li>
+            </ul>
+          </td>
+          <td>
+            <ul>
+              <li *ngFor="let s of c.sujets">
+                {{ s.titre }}
+              </li>
+            </ul>
+          </td>
+          <td>
+            <button
+              class="btn btn-primary me-2 btn-sm my-1"
+              type="button"
+              (click)="fun(mymodal1, c)"
+            >
+              <i class="bi bi-pencil-square"></i>
+              modifier
+            </button>
+            <button
+              class="btn btn-danger btn-sm my-1"
+              type="button"
+              (click)="onClickDelete(c)"
+            >
+              <i class="bi bi-x-lg"></i>
+              supprimer
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <app-offsetpagination
+    [itemsCount]="itemsCount"
+    [itemsPerPage]="50"
+    (indexChange)="onIndexChange($event)"
+    *ngIf="commissions.length > 0"
+  ></app-offsetpagination>
+</div>
+<ng-template
+  class="modal fade"
+  tabindex="-1"
+  role="dialog"
+  #mymodal
+  let-modal
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal-dialog-centered w-100 modal-xl"
+    role="document"
+  >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">
+          l'ajout du commission
+        </h5>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="form" (ngSubmit)="onClickSubmit()">
+          <div class="form-group mb-3">
+            <label for="date" class="mb-3">Date</label>
+            <input
+              type="date"
+              class="form-control"
+              id="date"
+              formControlName="date"
+            />
+          </div>
+          <div class="form-group mb-3">
+            <label for="lieu" class="mb-3">Lieu</label>
+            <input
+              type="text"
+              class="form-control"
+              id="lieu"
+              formControlName="lieu"
+            />
+          </div>
+          <div class="form-group mb-3">
+            <label for="heure" class="mb-3">Heure</label>
+            <input
+              type="time"
+              class="form-control"
+              id="heure"
+              formControlName="heure"
+            />
+          </div>
+          <div class="form-group mb-3">
+            <label for="sujets" class="mb-3">Sujets</label>
+            <div class="sujet">
+              <div class="col-5 border rounded p-2">
+                <h6>Sujets</h6>
+                <div class="ex3 mb-2 position-relative">
+                  <app-sujet-tree *ngFor="let key of processedSujetData.keys()" [profNom]="key" [sujets]="processedSujetData.get(key)" [selectedSujetsIds]="selectedSujetsIds" (sujetClicked)="onSujetSelect($event)"></app-sujet-tree>
+                </div>
+                <app-offsetpagination
+                  [itemsCount]="itemsCountSujets"
+                  [itemsPerPage]="50"
+                  (indexChange)="onIndexChangeSujets($event)"
+                  *ngIf="sujets.length > 0"
+                ></app-offsetpagination>
+              </div>
+              <div
+                class="col-2 d-flex flex-column justify-content-center align-items-center"
+              >
+                <h6 class="m-3">
+                  ajouter <i class="bi bi-arrow-right-circle-fill"></i>
+                </h6>
+                <h6 class="m-3">
+                  <i class="bi bi-arrow-left-circle-fill"></i> supprimer
+                </h6>
+              </div>
+              <div class="col-5 border rounded p-2">
+                <h6>Sujets sélectionnés</h6>
+                <div class="ex3">
+                  <p
+                    *ngFor="let o of selectedSujets"
+                    (click)="onSujetDeSelect(o)"
+                    class="op"
+                  >
+                    {{ o.titre }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group mb-3">
+            <label for="sujets" class="mb-3">Professeurs</label>
+
+            <div class="sujet">
+              <div class="col-5 border rounded p-2">
+                <h6>Professeurs</h6>
+                <div class="ex3 mb-2">
+                  <p
+                    (click)="onProfesseurSelect(s)"
+                    *ngFor="let s of professeurs"
+                    class="op"
+                  >
+                    {{ s.nom }} {{ s.prenom }}
+                  </p>
+                </div>
+                <app-offsetpagination
+                  [itemsCount]="itemsCountProfs"
+                  [itemsPerPage]="50"
+                  (indexChange)="onIndexChangeProfs($event)"
+                  *ngIf="professeurs.length > 0"
+                ></app-offsetpagination>
+              </div>
+              <div
+                class="col-2 d-flex flex-column justify-content-center align-items-center"
+              >
+                <h6 class="m-3">
+                  ajouter <i class="bi bi-arrow-right-circle-fill"></i>
+                </h6>
+                <h6 class="m-3">
+                  <i class="bi bi-arrow-left-circle-fill"></i> supprimer
+                </h6>
+              </div>
+              <div class="col-5 border rounded p-2">
+                <h6>Membres</h6>
+
+                <div class="ex3">
+                  <p
+                    *ngFor="let o of selectedProfs"
+                    (click)="onProfesseurDeSelect(o)"
+                    class="op"
+                  >
+                    {{ o.nom }} {{ o.prenom }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button
+              class="btn btn-secondary"
+              data-dismiss="modal"
+              (click)="modal.dismiss('Cross click')"
+              type="button"
+            >
+              annuler
+            </button>
+            <button
+              class="btn btn-primary btn-confirmer"
+              type="submit"
+              (click)="modal.close('Save click')"
+              [disabled]="
+                form.invalid ||
+                selectedSujets.length == 0 ||
+                selectedProfs.length == 0
+              "
+            >
+              confirmer
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<ng-template
+  class="modal fade"
+  tabindex="-1"
+  role="dialog"
+  #mymodal1
+  let-modal
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal-dialog-centered w-100 modal-xl"
+    role="document"
+  >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">
+          Modifier commission
+        </h5>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="form" (ngSubmit)="onClickUpdate()">
+          <div class="form-group mb-3">
+            <label for="date" class="mb-3">Date</label>
+            <input
+              type="date"
+              class="form-control"
+              id="date"
+              formControlName="date"
+            />
+          </div>
+          <div class="form-group mb-3">
+            <label for="lieu" class="mb-3">Lieu</label>
+            <input
+              type="text"
+              class="form-control"
+              id="lieu"
+              formControlName="lieu"
+            />
+          </div>
+          <div class="form-group mb-3">
+            <label for="heure" class="mb-3">Heure</label>
+            <input
+              type="time"
+              class="form-control"
+              id="heure"
+              formControlName="heure"
+            />
+          </div>
+          <div class="form-group mb-3">
+            <label for="sujets" class="mb-3">Sujets</label>
+            <!-- <div class="row">
+              <div class="w-100">
+                <div class="row">
+                  <div class="col-8 col-sm-6">
+                    <select
+                      class="form-select w-100"
+                      multiple
+                      size="10"
+                      aria-label="multiple select example"
+                    >
+                     
+                      <option
+                        (click)="onSujetSelect(s)"
+                        *ngFor="let s of sujets"
+                      >
+                        {{ s.titre }}
+                      </option>
+                      
+                    </select>
+                  </div>
+                  <div class="col-8 col-sm-6">
+                    <select
+                      class="form-select w-100"
+                      multiple
+                      size="10"
+                      aria-label="multiple select example"
+                      id="sujets"
+                      formControlName="sujets"
+                    >
+                      <option
+                        *ngFor="let o of selectedSujets"
+                        (click)="onSujetDeSelect(o)"
+                      >
+                        {{ o.titre }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+            <div class="sujet">
+              <div class="col-5 border rounded p-2">
+                <h6>Sujets</h6>
+                <!-- <div class="ex3 mb-2">
+                  <p
+                    (click)="onSujetSelect(s)"
+                    *ngFor="let s of sujets"
+                    class="op"
+                  >
+                    {{ s.titre }}
+                  </p>
+                </div> -->
+                <div class="ex3 mb-2 position-relative">
+                  <app-sujet-tree *ngFor="let key of processedSujetData.keys()" [profNom]="key" [sujets]="processedSujetData.get(key)" [selectedSujetsIds]="selectedSujetsIds" (sujetClicked)="onSujetSelect($event)"></app-sujet-tree>
+                </div>
+                <app-offsetpagination
+                  [itemsCount]="itemsCountSujets"
+                  [itemsPerPage]="50"
+                  (indexChange)="onIndexChangeSujets($event)"
+                  *ngIf="sujets.length > 0"
+                ></app-offsetpagination>
+              </div>
+              <div
+                class="col-2 d-flex flex-column justify-content-center align-items-center"
+              >
+                <h6 class="m-3">
+                  ajouter <i class="bi bi-arrow-right-circle-fill"></i>
+                </h6>
+                <h6 class="m-3">
+                  <i class="bi bi-arrow-left-circle-fill"></i> supprimer
+                </h6>
+              </div>
+              <div class="col-5 border rounded p-2">
+                <h6>Sujets sélectionnés</h6>
+                <div class="ex3">
+                  <p
+                    *ngFor="let o of selectedSujets"
+                    (click)="onSujetDeSelect(o)"
+                    class="op"
+                  >
+                    {{ o.titre }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group mb-3">
+            <label for="sujets" class="mb-3">Professeurs</label>
+
+            <div class="sujet">
+              <div class="col-5 border rounded p-2">
+                <h6>Professeurs</h6>
+                <div class="ex3 mb-2">
+                  <p
+                    (click)="onProfesseurSelect(s)"
+                    *ngFor="let s of professeurs"
+                    class="op"
+                  >
+                    {{ s.nom }} {{ s.prenom }}
+                  </p>
+                </div>
+                <app-offsetpagination
+                  [itemsCount]="itemsCountProfs"
+                  [itemsPerPage]="50"
+                  (indexChange)="onIndexChangeProfs($event)"
+                  *ngIf="professeurs.length > 0"
+                ></app-offsetpagination>
+              </div>
+              <div
+                class="col-2 d-flex flex-column justify-content-center align-items-center"
+              >
+                <h6 class="m-3">
+                  ajouter <i class="bi bi-arrow-right-circle-fill"></i>
+                </h6>
+                <h6 class="m-3">
+                  <i class="bi bi-arrow-left-circle-fill"></i> supprimer
+                </h6>
+              </div>
+              <div class="col-5 border rounded p-2">
+                <h6>Membres</h6>
+                <div class="ex3">
+                  <p
+                    *ngFor="let o of selectedProfs"
+                    (click)="onProfesseurDeSelect(o)"
+                    class="op"
+                  >
+                    {{ o.nom }} {{ o.prenom }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              class="btn btn-secondary"
+              data-dismiss="modal"
+              (click)="modal.dismiss('Cross click')"
+              type="button"
+            >
+              annuler
+            </button>
+            <button
+              class="btn btn-primary btn-confirmer"
+              type="submit"
+              (click)="modal.close('Save click')"
+              [disabled]="
+                form.invalid ||
+                selectedSujets.length == 0 ||
+                selectedProfs.length == 0
+              "
+            >
+              confirmer
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</ng-template>

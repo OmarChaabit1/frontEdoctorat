@@ -1,0 +1,75 @@
+<app-alert [data]="alertData"></app-alert>
+<div *ngIf="true" class="container col-lg-12" style="margin-top: 30px">
+        <div *ngFor="let c of calendrierData" class="accordion" id="accordionPanelsStayOpenExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header" [id]="c.id">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                [attr.data-bs-target]="'#panelsStayOpen-'+c.id"
+                aria-expanded="false"
+                [attr.aria-controls]="'panelsStayOpen-'+c.id"
+              >
+                {{c.action}}:
+              </button>
+            </h2>
+            <div
+              [id]="'panelsStayOpen-'+c.id"
+              class="accordion-collapse collapse"
+              aria-labelledby="panelsStayOpen-headingOne"
+            >
+              <div class="accordion-body">
+                <form
+                  data-id-prof="$ prof.idProfesseur "
+                  data-id-calendrier="1"
+                  class="row g-3 calendrier-form"
+                >
+                  <div class="col-auto">
+                    <input
+                      type="text"
+                      readonly
+                      class="form-control-plaintext"
+                      id="d1"
+                      value="De"
+                    />
+                  </div>
+                  <div class="col-auto">
+                    <input
+                      type="date"
+                      name="dateDebut"
+                      [id]="'date-debut-'+c.id"
+                      class="form-control"
+                      [value]="c.dateDebut"
+                      required
+                    />
+                  </div>
+                  <div class="col-auto">
+                    <input
+                      type="text"
+                      readonly
+                      class="form-control-plaintext"
+                      id="a1"
+                      value="à"
+                    />
+                  </div>
+                  <div class="col-auto">
+                    <input
+                      type="date"
+                      name="dateFin"
+                      [id]="'date-fin-'+c.id"
+                      [value]="c.dateFin"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="col-auto">
+                    <button (click)="onConfirmerClicked(c.id)" class="btn btn-primary mb-3">
+                      Confirmer
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+      </div>

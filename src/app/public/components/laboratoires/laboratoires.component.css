@@ -1,0 +1,14 @@
+.text-color {
+
+    color:#003556 !important;
+
+}
+
+.bg-color {
+    background-color: #003556;
+    width: fit-content;
+    color:white;
+    text-align: start;
+    padding: 7px;
+    margin-right: 3px;
+}

@@ -1,0 +1,61 @@
+
+
+<div class="container-fluid mt-3">
+  <div class="table-responsive">
+
+    <table *ngIf="!isFetchingItems" class="table table-align-middle">
+      <thead>
+        <tr class="table-primary">
+          
+          <th scope="col" class="w-13">date</th>
+          <th scope="col" class="w-13">heure</th>
+          <th scope="col" class="w-15">lieu</th>
+          <th scope="col" class="w-43">sujet</th>
+          <th scope="col" class="w-43">membres</th>
+          <th scope="col" class="w-43">Labo</th>
+          <th scope="col" class="w-43">CED</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of commissions">
+          <td>{{ c.dateCommission }}</td>
+          <td>{{ c.heure }}</td>
+          <td>{{ c.lieu }}</td>
+          <td>
+              <ul>
+                  <li *ngFor="let s of c.sujets">
+                      {{ s.titre }}
+                  </li>
+              </ul>
+          </td>
+          <td>
+              <ul>
+                  <li *ngFor="let p of c.participants">
+                      {{ p.nom }} {{ p.prenom }}
+                  </li>
+              </ul>
+          </td>
+          
+          <td>{{ c.labo }}</td>
+          <td>ced</td>
+
+      </tr>
+      </tbody>
+    </table>
+    <div *ngIf="isFetchingItems">
+      <h4>
+        <img
+          src="/assets/images/connexion/loading.webp"
+          width="300"
+          height="100"
+        />
+      </h4>
+    </div>
+  </div>
+ <app-offsetpagination
+    [itemsCount]="itemsCount"
+    [itemsPerPage]="50"
+    (indexChange)="onIndexChange($event)"
+    *ngIf="commissions.length > 0"
+  ></app-offsetpagination> 
+</div>

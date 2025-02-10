@@ -1,0 +1,250 @@
+<app-alert *ngIf="alert" [data]="alert"></app-alert>
+<app-alert *ngIf="loading" [data]="alert"></app-alert>
+
+<div class="container-fluid mt-3">
+  <div class="row mb-3">
+    <div class="col-6 m-start">
+      <button
+        class="btn btn-primary btn-sm"
+        type="button"
+        (click)="open(mymodal)"
+      >
+        <i class="bi bi-plus-square-dotted"></i>
+        ajouter un sujet
+      </button>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-align-middle table-sm">
+      <thead>
+        <tr class="table-primary">
+          <th scope="col" class="w-7">Titre Sujet</th>
+          <th scope="col" class="w-23">Description</th>
+          <th scope="col" class="w-7">co-directeur</th>
+          <th scope="col" class="w-23">Formation Doctorale</th>
+          <th scope="col" class="23">action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let s of sujets">
+          <td>{{ s.titre }}</td>
+          <td>{{ s?.description }}</td>
+          <td>{{ s.coDirecteur?.nom }} {{ s.coDirecteur?.prenom }}</td>
+          <td>{{ s.formationDoctorale?.titre }}</td>
+          <td
+            
+          >
+            <button
+              class="btn btn-primary me-2 btn-sm my-1"
+              type="button"
+              (click)="fun(mymodal1, s)"
+            >
+              <i class="bi bi-pencil-square"></i>
+              modifier
+            </button>
+            <button
+              class="btn btn-danger btn-sm my-1"
+              type="button"
+              (click)="onClickDelete(s)"
+            >
+              <i class="bi bi-x-lg"></i>
+              supprimer
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!---modal-->
+
+<ng-template
+  class="modal fade"
+  tabindex="-1"
+  role="dialog"
+  #mymodal
+  let-modal
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered w-100" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">l'ajout du sujet</h5>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="form" (ngSubmit)="onClickSubmit()">
+          <div class="form-group mb-3">
+            <label for="my-textarea" class="mb-3">Titre</label>
+            <textarea
+              maxlength="512"
+              placeholder="Max. 512 caractères"
+              id="my-textarea"
+              class="form-control"
+              name=""
+              rows="3"
+              formControlName="titre"
+            ></textarea>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="my-textarea" class="mb-3">Description</label>
+            <textarea
+              maxlength="512"
+              placeholder="Max. 2048 caractères"
+              id="my-textarea"
+              class="form-control"
+              name=""
+              rows="3"
+              formControlName="description"
+            ></textarea>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="my-select" class="mb-3">co-directeur</label>
+
+            <select
+              id="my-select"
+              class="form-select"
+              name=""
+              formControlName="coDirecteur"
+            >
+              <option *ngFor="let p of professeurs" value="{{ p.id }}">
+                {{ p.nom }} {{ p.prenom }}
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="my-select" class="mb-3">Formation Doctorale</label>
+
+            <select
+              id="my-select"
+              class="form-select"
+              name=""
+              formControlName="formationDoctorale"
+            >
+              <option *ngFor="let f of formationDoctorales" [value]="f.id">
+                {{ f.titre }}
+              </option>
+            </select>
+          </div>
+          <div class="modal-footer">
+            <button
+              class="btn btn-secondary"
+              data-dismiss="modal"
+              (click)="modal.dismiss('Cross click')"
+              type="button"
+            >
+              annuler
+            </button>
+            <button
+              class="btn btn-primary btn-confirmer"
+              type="submit"
+              (click)="modal.close('Save click')"
+              [disabled]="form.invalid"
+            >
+              confirmer
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<ng-template
+  class="modal fade"
+  tabindex="-1"
+  role="dialog"
+  #mymodal1
+  let-modal
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered w-100" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">
+          Modifier du sujet
+        </h5>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="form" (ngSubmit)="onClickUpdate()">
+          <div class="form-group mb-3">
+            <label for="my-textarea" class="mb-3">Titre</label>
+            <textarea
+              maxlength="512"
+              placeholder="Max. 512 caractères"
+              id="my-textarea"
+              class="form-control"
+              name=""
+              rows="3"
+              formControlName="titre"
+            ></textarea>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="my-textarea" class="mb-3">Description</label>
+            <textarea
+              maxlength="512"
+              placeholder="Max. 2048 caractères"
+              id="my-textarea"
+              class="form-control"
+              name=""
+              rows="3"
+              formControlName="description"
+            ></textarea>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="my-select" class="mb-3">co-directeur</label>
+
+            <select
+              id="my-select"
+              class="form-select"
+              name=""
+              formControlName="coDirecteur"
+            >
+              <option *ngFor="let p of professeurs" value="{{ p.id }}">
+                {{ p.nom }} {{ p.prenom }}
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="my-select" class="mb-3">Formation Doctorale</label>
+
+            <select
+              id="my-select"
+              class="form-select"
+              name=""
+              formControlName="formationDoctorale"
+            >
+              <option *ngFor="let f of formationDoctorales" value="{{ f.id }}">
+                {{ f.titre }}
+              </option>
+            </select>
+          </div>
+          <div class="modal-footer">
+            <button
+              class="btn btn-secondary"
+              data-dismiss="modal"
+              (click)="modal.dismiss('Cross click')"
+              type="button"
+            >
+              annuler
+            </button>
+            <button
+              class="btn btn-primary btn-confirmer"
+              type="submit"
+              (click)="modal.close('Save click')"
+              [disabled]="form.invalid"
+            >
+              confirmer
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</ng-template>

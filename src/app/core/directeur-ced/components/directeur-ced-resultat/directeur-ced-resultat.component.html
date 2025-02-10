@@ -1,0 +1,38 @@
+
+<app-alert *ngIf="alert" [data]="alert"></app-alert>
+<app-alert *ngIf="loading" [data]="alert"></app-alert>
+
+<div class="container-fluid mt-3">
+    <div class="table-responsive">
+      <table class="table table-align-middle">
+        <thead>
+          <tr class="table-primary">
+            <th scope="col" class="w-7">Sujet</th>
+            <th scope="col" class="w-7">cne</th>
+            <th scope="col" class="w-7">Candidat</th>
+            <th scope="col" class="w-7">Note dossier</th>
+            <th scope="col" class="w-7">Note Entretien</th>
+            <th scope="col" class="w-7">Moyenne generale</th>
+            <th scope="col" class="w-7">Decision</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let r of resultats">
+            <td>{{ r.sujet.titre }}</td>
+            <td>{{ r.candidat.cne }}</td>
+            <td>{{ r.candidat.nom }} {{ r.candidat.prenom }}</td>
+            <td>{{ r.noteDossier }}</td>
+            <td>{{ r.noteEntretien }}</td>
+            <td>{{ (r.noteDossier + r.noteEntretien) / 2 }}</td>
+            <td>{{ r.decision }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <app-offsetpagination
+        [itemsCount]="itemsCount"
+        [itemsPerPage]="50"
+        (indexChange)="onIndexChange($event)"
+        *ngIf="resultats.length > 0"
+      ></app-offsetpagination>
+    </div>
+  </div>

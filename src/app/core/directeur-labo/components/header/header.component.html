@@ -1,0 +1,35 @@
+<div class="container-fluid">
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand"> <img
+      class="img-fluid img-thumbnail"
+      src="/assets/images/usmba-logo.png"
+      width="180"
+      height="40"
+      alt=""
+      srcset=""
+    /></a>
+    <div class="d-flex justify-content-around align-items-center w-70">
+      <img
+      class="img-thumbnail mx-3"
+      [src]=" prof?.pathPhoto ? prof?.pathPhoto : '/assets/images/unknown_pic.jpg' " alt="image prof"
+      width="50"
+      height="50"
+      alt=""
+      srcset=""
+    />
+    <div class="d-flex justify-content-center align-items-center ">
+    <span class="text-start">{{ prof.prenom }} {{ prof.nom }}</span>
+  </div> 
+
+    <button class="btn btn-primary btn-sm mx-3" type="button" (click)="logout()">
+      <i class="bi bi-box-arrow-right"></i>
+      deconnexion
+    </button>
+     
+    </div>
+  </div>
+</nav>
+</div>
+
+

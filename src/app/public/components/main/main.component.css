@@ -1,0 +1,6 @@
+.bg {
+    background-color: #f9f9fd;
+    
+    background-image: radial-gradient(#003556 0.5px, #f9f9fd 0.5px);
+    background-size: 10px 10px;
+}
